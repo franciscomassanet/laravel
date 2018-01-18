@@ -113,7 +113,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="/myResults">My Results</a></li>
+                                    <li><a href="/myResults" class="dropdown-item">My Results</a></li>
                                     <li><a href="/myClassrooms">My Classrooms</a></li>
                                     <li><a href="/teachers">Manage Teachers</a></li>
                                     <li>

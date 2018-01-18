@@ -1,0 +1,170 @@
+@extends('layouts.admin_menu')
+
+<style>
+	body {
+		background-image: url("img/wallpapers/topBanner.jpg");
+		background-attachment: fixed;
+		background-repeat:no-repeat;
+		background-size:cover;
+	}
+
+	.form-light .font-small {
+		font-size: 0.8rem; }
+
+	.form-light [type="radio"] + label,
+	.form-light [type="checkbox"] + label {
+		font-size: 0.8rem; }
+
+	.form-light [type="checkbox"] + label:before {
+		top: 2px;
+		width: 15px;
+		height: 15px; }
+
+	.form-light input[type="checkbox"] + label:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 17px;
+		height: 17px;
+		z-index: 0;
+		border-radius: 1px;
+		margin-top: 2px;
+		-webkit-transition: 0.2s;
+		transition: 0.2s; }
+
+	.form-light input[type="checkbox"]:checked + label:before {
+		top: -4px;
+		left: -3px;
+		width: 12px;
+		height: 22px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: transparent #EB3573 #EB3573 transparent;
+		-webkit-transform: rotate(40deg);
+		-ms-transform: rotate(40deg);
+		transform: rotate(40deg);
+		-webkit-backface-visibility: hidden;
+		-webkit-transform-origin: 100% 100%;
+		-ms-transform-origin: 100% 100%;
+		transform-origin: 100% 100%; }
+
+	.form-light .footer {
+		border-bottom-left-radius: .3rem;
+		border-bottom-right-radius: .3rem; }
+</style>
+
+@section('content')
+
+	<div class="container" style="background-color: rgba(255,255,255,0.5); padding-top: 40px; min-height: 80%; ">
+		<!--Card image-->
+		<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+
+			<div align="center">
+				<span class="white-text mx-3"><h1>Teacher Management</h1></span>
+			</div>
+
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-md-6">
+
+				<div class="card card-cascade narrower">
+
+					<!--Card image-->
+					<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+
+						<div>
+							<span class='white-text mx-3'><h1>Active Teachers</h1></span>
+						</div>
+
+					</div>
+					<!--/Card image-->
+
+					<div class="px-4">
+						<div class="table-wrapper">
+							<!--Table-->
+							<table class="table table-hover mb-0" >
+
+								<!--Table head-->
+								<thead align="center">
+								<tr>
+									<th class="th-lg" style="font-weight: bold;">Name</th>
+									<th class="th-lg" style="font-weight: bold;">Email</th>
+								</tr>
+								</thead>
+								<!--Table head-->
+
+								<!--Table body-->
+								<tbody>
+								<tr>
+									<?php
+										$qrys = DB::table('users')->WHERE('is_teacher', 1)->get();
+
+										foreach ($qrys AS $qry){
+
+												echo "
+												<tr>
+													<td>{$qry->name}</td>
+													<td>{$qry->email}</td>
+												</tr>
+												";
+										};
+									?>
+
+								</tr>
+								</tbody>
+								<!--Table body-->
+							</table>
+							<!--Table-->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<section class="form-light">
+
+					<!--Form without header-->
+					<div class="card">
+						<div class="card-body mx-4">
+
+							<!--Header-->
+							<div class="text-center">
+								<h3 class="pink-text mb-5"><strong>Add Teacher</strong></h3>
+							</div>
+
+							<!--Body-->
+							<div class="md-form">
+								<input type="text" id="Form-email2" class="form-control">
+								<label for="Form-email2">Teacher email</label>
+							</div>
+
+							<div class="md-form pb-3">
+								<div class="form-group">
+									<input type="checkbox" id="checkbox">
+									<label for="checkbox" class="grey-text">Confirm you wish to add as teacher</a></label>
+								</div>
+							</div>
+
+							<!--Grid row-->
+							<div class="row d-flex align-items-center mb-4">
+
+								<!--Grid column-->
+								<div class="col-md-3 col-md-6 text-center">
+									<button type="button" class="btn btn-pink btn-block btn-rounded z-depth-1">Add</button>
+								</div>
+								<!--Grid column-->
+
+							</div>
+							<!--Grid row-->
+						</div>
+
+					</div>
+					<!--/Form without header-->
+
+				</section>
+			</div>
+		</div>
+
+@endsection

@@ -38,3 +38,6 @@ Route::get('/subject_area/{slug}', 'courses@courses')->middleware('auth');
 
 Route::get('/myClassrooms', 'myClasses@classes');
 Route::get('/myResults', 'myResults@results');
+
+
+Route::post('/add/teacher', 'teacher@store');

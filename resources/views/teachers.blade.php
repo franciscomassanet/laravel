@@ -134,30 +134,32 @@
 								<h3 class="pink-text mb-5"><strong>Add Teacher</strong></h3>
 							</div>
 
-							<!--Body-->
-							<div class="md-form">
-								<input type="text" id="Form-email2" class="form-control">
-								<label for="Form-email2">Teacher email</label>
-							</div>
-
-							<div class="md-form pb-3">
-								<div class="form-group">
-									<input type="checkbox" id="checkbox">
-									<label for="checkbox" class="grey-text">Confirm you wish to add as teacher</a></label>
+							<form method="post" action="/add/teacher">
+								<!--Body-->
+								<div class="md-form">
+									<input type="text" id="email" class="form-control">
+									<label for="email">Teacher email</label>
 								</div>
-							</div>
 
-							<!--Grid row-->
-							<div class="row d-flex align-items-center mb-4">
-
-								<!--Grid column-->
-								<div class="col-md-3 col-md-6 text-center">
-									<button type="button" class="btn btn-pink btn-block btn-rounded z-depth-1">Add</button>
+								<div class="md-form pb-3">
+									<div class="form-group">
+										<input type="checkbox" id="checkbox">
+										<label for="checkbox" class="grey-text">Confirm you wish to add as teacher</a></label>
+									</div>
 								</div>
-								<!--Grid column-->
 
-							</div>
-							<!--Grid row-->
+								<!--Grid row-->
+								<div class="row d-flex align-items-center mb-4">
+
+									<!--Grid column-->
+									<div class="col-md-3 col-md-6 text-center">
+										<button type="submit" class="btn btn-pink btn-block btn-rounded z-depth-1">Add Teacher</button>
+									</div>
+									<!--Grid column-->
+
+								</div>
+								<!--Grid row-->
+							</form>
 						</div>
 
 					</div>

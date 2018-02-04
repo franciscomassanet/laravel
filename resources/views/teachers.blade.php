@@ -134,7 +134,7 @@
 								<h3 class="pink-text mb-5"><strong>Add Teacher</strong></h3>
 							</div>
 
-							<form method="post" action="/add/teacher">
+							<form method="POST" action="/add/teacher" role="form">
 								<!--Body-->
 								<div class="md-form">
 									<input type="text" id="email" class="form-control">
@@ -153,7 +153,7 @@
 
 									<!--Grid column-->
 									<div class="col-md-3 col-md-6 text-center">
-										<button type="submit" class="btn btn-pink btn-block btn-rounded z-depth-1">Add Teacher</button>
+										<input type="submit" value="Add Teacher" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
 									</div>
 									<!--Grid column-->
 

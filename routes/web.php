@@ -40,4 +40,4 @@ Route::get('/myClassrooms', 'myClasses@classes');
 Route::get('/myResults', 'myResults@results');
 
 
-Route::post('/add/teacher', 'teacher@store')->middleware('auth');
+Route::post('/add/teacher', 'admin@store');

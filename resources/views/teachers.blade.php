@@ -70,7 +70,7 @@
 		<br><br>
 		<div class="row">
 
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<section class="form-light">
 
 					<!--Form without header-->
@@ -91,13 +91,27 @@
 								</div>
 
 								<div class="md-form pb-3">
-									<div class="form-group ">
-										<input name="add" type="checkbox" id="checkbox">
-										<label for="checkbox" class="grey-text">Add teacher</label>
-									</div>
-									<div class="form-group">
-										<input name="delete" type="checkbox" id="checkbox2">
-										<label for="checkbox2" class="grey-text">Delete teacher</label>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group ">
+												<input name="add" type="checkbox" id="checkbox">
+												<label for="checkbox" class="grey-text">Add teacher</label>
+											</div>
+											<div class="form-group">
+												<input name="delete" type="checkbox" id="checkbox2">
+												<label for="checkbox2" class="grey-text">Delete teacher</label>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<input name="admin" type="checkbox" id="checkbox3">
+												<label for="checkbox3" class="grey-text">Add Admin User</label>
+											</div>
+											<div class="form-group">
+												<input name="delete_admin" type="checkbox" id="checkbox4">
+												<label for="checkbox4" class="grey-text">Delete Admin User</label>
+											</div>
+										</div>
 									</div>
 								</div>
 
@@ -105,7 +119,8 @@
 								<div class="row d-flex align-items-center mb-4">
 
 									<!--Grid column-->
-									<div class="col-md-3 col-md-6 text-center">
+									<div class="col-md-4"></div>
+									<div class="col-md-4 text-center">
 										<input type="submit" value="Submit" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
 									</div>
 									<!--Grid column-->
@@ -122,7 +137,7 @@
 				</section>
 			</div>
 
-			<div class="col-md-12">
+			<div class="col-md-12" >
 
 				<div class="card card-cascade narrower" style="margin-bottom: 20px;">
 
@@ -136,7 +151,7 @@
 					</div>
 					<!--/Card image-->
 
-					<div class="px-4">
+					<div class="px-4" style="margin-bottom: 40px;">
 						<div class="table-wrapper">
 							<!--Table-->
 							<table class="table table-hover mb-0" >
@@ -166,6 +181,64 @@
 												";
 										};
 									?>
+
+								</tr>
+								</tbody>
+								<!--Table body-->
+							</table>
+							<!--Table-->
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-md-12" >
+
+				<div class="card card-cascade narrower" style="margin-bottom: 20px;">
+
+
+					<!--Card image-->
+					<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+
+						<div>
+							<span class='white-text mx-3'><h1>Admin Users</h1></span>
+						</div>
+
+					</div>
+					<!--/Card image-->
+
+
+					<div class="px-4" style="margin-bottom: 20px;">
+						<div class="table-wrapper">
+							<!--Table-->
+							<table class="table table-hover mb-0" >
+
+								<!--Table head-->
+								<thead align="center">
+								<tr>
+									<th class="th-lg" style="font-weight: bold;">Name</th>
+									<th class="th-lg" style="font-weight: bold;">Email</th>
+								</tr>
+								</thead>
+								<!--Table head-->
+
+								<!--Table body-->
+								<tbody>
+								<tr>
+                                    <?php
+                                    $qrys = DB::table('users')->WHERE('is_teacher', '>=', 2)->get();
+
+                                    foreach ($qrys AS $qry){
+
+                                        echo "
+												<tr>
+													<td>{$qry->name}</td>
+													<td>{$qry->email}</td>
+												</tr>
+												";
+                                    };
+                                    ?>
 
 								</tr>
 								</tbody>

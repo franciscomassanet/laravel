@@ -55,6 +55,14 @@ class admin extends Controller
                 DB::table('users')->where('email', $request->email)->update(['is_teacher' => 0]);
             };
 
+            if ($request->admin == true) {
+                DB::table('users')->where('email', $request->email)->update(['is_teacher' => 2]);
+            };
+
+            if ($request->delete_admin == true) {
+                DB::table('users')->where('email', $request->email)->update(['is_teacher' => 1]);
+            };
+
             return redirect('teachers');
         }
 

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Laravel\Socialite\Facades\Socialite;
-use App\User;
+use Auth;
+
+
 
 class courses extends Controller
 {
@@ -15,30 +14,34 @@ class courses extends Controller
 	
 	public function view()
     {
-	  $user = DB::table('roles')->where('user_id', Auth::user()->id)->get()->first();
-	  $role = $user->role;
-	  if($role ==1){
-		return view("test");
-	  }
-	  else{
-		return view("test2");
-	  }
-	  
-	  
-	  
+
 	}
 	
 	public function courses($slug)
     {
-	  $courses = DB::table('courses')->where('subject', $slug)->get();
-	  return view("subject_area/".$slug, ['courses' => $courses]);
+        $id = Auth::user()->email;
+        $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
+
+        if ($admin >= 1) {
+            $courses = DB::table('courses')->where('subject', $slug)->get();
+            return view("subject_area/" . $slug, ['courses' => $courses]);
+        };
+
+        return view('access');
 	  
 	}
 	
 	public function subjects()
     {
-	  $courses = DB::table('subjects')->get();
-	  return view("subjects", ['subjects' => $courses]);
-	  
+        $id = Auth::user()->email;
+        $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
+
+        if ($admin >= 1) {
+            $courses = DB::table('subjects')->get();
+            return view("subjects", ['subjects' => $courses]);
+        };
+
+        return view('access');
+
 	}
 }

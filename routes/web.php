@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teachers', function () {
-    return view('teachers');
-});
+Route::get('/teachers', 'admin@teachers')->middleware('auth');
 
 
 Route::get('insert/{CourseID}/{CourseName}/{Results}/{Grade}/{Email}/{Duration}', 'insert@insert');
@@ -40,4 +40,4 @@ Route::get('/myClassrooms', 'myClasses@classes');
 Route::get('/myResults', 'myResults@results');
 
 
-Route::post('/add/teacher', 'admin@store');
+Route::post('/add/teacher', ['as'=>'status.store','uses'=>'admin@store'])->middleware('auth');

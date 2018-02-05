@@ -154,7 +154,7 @@
 								<tbody>
 								<tr>
 									<?php
-										$qrys = DB::table('users')->WHERE('is_teacher', 1)->get();
+										$qrys = DB::table('users')->WHERE('is_teacher', '>=', 1)->get();
 
 										foreach ($qrys AS $qry){
 

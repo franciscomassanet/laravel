@@ -17,11 +17,11 @@ class admin extends Controller
         $id = Auth::user()->email;
         $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
 
-        if ($admin == 1) {
+        if ($admin >= 2) {
             return view('teachers');
         }
 
-        echo 'sorry you do not have access';
+        return view('access');
     }
 
     /**
@@ -38,20 +38,27 @@ class admin extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, array(
-            'email' => 'required',
-        ));
+        $id = Auth::user()->email;
+        $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
 
-        if ($request->add == true){
-            DB::table('users')->where('email', $request->email)->update(['is_teacher' => 1]);
+        if ($admin >= 2) {
+            $this->validate($request, array(
+                'email' => 'required',
+            ));
 
-        };
+            if ($request->add == true) {
+                DB::table('users')->where('email', $request->email)->update(['is_teacher' => 1]);
 
-        if ($request->delete == true){
-        DB::table('users')->where('email', $request->email)->update(['is_teacher' => 0]);
-        };
+            };
 
-        return redirect('teachers');
+            if ($request->delete == true) {
+                DB::table('users')->where('email', $request->email)->update(['is_teacher' => 0]);
+            };
+
+            return redirect('teachers');
+        }
+
+        return view('access');
     }
 
     /**

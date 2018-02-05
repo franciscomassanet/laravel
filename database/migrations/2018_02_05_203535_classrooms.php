@@ -14,9 +14,13 @@ class Classrooms extends Migration
     public function up()
     {
         //
-        Schema::create('users_results', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('results_id');
+        Schema::create('classrooms', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('class_name');
+            $table->string('teacher');
+            $table->string('classroom_icon');
+            $table->string('code');
+            $table->timestamp('date');
         });
     }
 

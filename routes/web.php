@@ -18,9 +18,10 @@ Route::get('/', function () {
 });
 
 Route::get('/teachers', 'admin@teachers')->middleware('auth');
-
-
 Route::get('insert/{CourseID}/{CourseName}/{Results}/{Grade}/{Email}/{Duration}', 'insert@insert');
+
+
+
 Route::get("lessons/{slug}/{course}", "contents@index")->middleware('auth');
 
 

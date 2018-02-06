@@ -95,7 +95,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/blc_class_page.html">Teacher Report</a>
-                                <a class="dropdown-item" href="/blc_dashboard.html">Admin Report</a>
+                                <a class="dropdown-item" href="/blc_dashboard.html">College Report</a>
                             </div>
                         </li>
                     </ul>

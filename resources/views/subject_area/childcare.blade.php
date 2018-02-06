@@ -1,5 +1,5 @@
 <meta property="og:image" content="http://cdn.akc.org/Best-_and-Worst_-Toys-for-Your-Teething-Puppy.jpg" />
-@extends('layouts.admin_menu')
+@extends('layouts.teacher_menu')
 
 @section('content')
 

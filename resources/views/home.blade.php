@@ -20,7 +20,6 @@
 
  <!--Main Layout-->
     <main>
-        <?php echo $a ?>
         <div class="container" style="background-color: rgba(255,255,255,0.5); ">
             
             

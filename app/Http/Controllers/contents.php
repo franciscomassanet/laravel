@@ -16,7 +16,7 @@ class contents extends Controller
         $id = Auth::user()->email;
         $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
 
-        if ($admin == 1) {
+        if ($admin >= 1) {
             return view('lessons/' . $slug . '/' . $course);
         };
 

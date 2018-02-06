@@ -1,4 +1,24 @@
-@extends('layouts.admin_menu')
+<?php
+    $id = Auth::user()->email;
+    $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
+?>
+
+
+@if($admin >= 2 )
+    //Admin menu
+    @extends ('layouts.admin_menu')
+@endif
+
+@if ($admin >= 1 )
+    // Teacher menu
+    @extends('layouts.teacher_menu')
+@else
+    // Student menu
+    @extends ('layouts.student_menu')
+@endif
+
+
+
 
 @section('content')
 <head>

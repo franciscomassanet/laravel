@@ -17,13 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('signin', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::get('/teachers', 'admin@teachers')->middleware('auth');
-Route::post('/add/teacher', ['as'=>'status.store','uses'=>'admin@store'])->middleware('auth');
+Route::post('/add/teacher', 'admin@store')->middleware('auth');
+Route::post('/add/course', 'admin@store_course')->middleware('auth');
+Route::get('/insert_course', 'admin@insert_course')->middleware('auth');
 
 Route::get('insert/{CourseID}/{CourseName}/{Results}/{Grade}/{Email}/{Duration}', 'insert@insert');
 

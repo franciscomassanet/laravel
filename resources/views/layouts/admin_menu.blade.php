@@ -116,6 +116,7 @@
                                     <li><a href="/myResults" class="dropdown-item">My Results</a></li>
                                     <li><a href="/myClassrooms" class="dropdown-item">My Classrooms</a></li>
                                     <li><a href="/teachers" class="dropdown-item">Manage Teachers</a></li>
+                                    <li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" class="dropdown-item"
                                             onclick="event.preventDefault();

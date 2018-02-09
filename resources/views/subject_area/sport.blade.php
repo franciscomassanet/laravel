@@ -45,14 +45,14 @@
 				</div>
 				
 				<?php
-				 echo "<div class='row'>";
+				 echo "<div class='row d-flex'>";
 				 foreach($courses as $course){
 					 
 					 if ($course->level == 2){
         
 					 echo "
-					 <div class='col-lg-3 col-md-6 mb-r'>
-                        <div class='card card-cascade narrower'>
+					 <div class='col-lg-3 col-md-6 mb-r d-flex'>
+                        <div class='card card-cascade narrower d-flex'>
 							
                             <div class='card-body text-center no-padding'>
                                 <h4 class='card-title'><strong>{$course->name}</strong></h4>
@@ -104,7 +104,7 @@
                                 <a href='{$course->view_link}'>
 								<div class='card-footer'>
                                     <span class='left'>View Courses <span class='discount'></span></span>
-                                    <span class='right'><i class='fa fa-arrow-circle-right fa-2x' aria-hidden='true' style='color: #7283A7;'></i></span>
+                                    <span class='right'>{$course->classroom_link}</span>
                                 </div>
 								</a>
                             </div>

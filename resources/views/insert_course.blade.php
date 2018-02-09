@@ -1,6 +1,6 @@
 
 
-@extends ('layouts.student_menu')
+@extends ('layouts.admin_menu')
 
 
 
@@ -91,26 +91,15 @@
                                         <label for="name" class="grey-text"></label>
                                     </div>
 
-
-
+                                    <div class="row d-flex align-items-center mb-4" style="margin-top: 30px;">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4 text-center">
+                                            <input type="submit" value="Add Course" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!--Grid row-->
-                        <div class="row d-flex align-items-center mb-4">
-
-                            <!--Grid column-->
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4 text-center">
-                                <input type="submit" value="Add Course" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
-                            </div>
-                            <!--Grid column-->
-
-                        </div>
-                        <!--Grid row-->
-                    </form>
-                </div>
 
 
             </div>

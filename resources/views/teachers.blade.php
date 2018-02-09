@@ -57,6 +57,24 @@
 @section('content')
 
 	<div class="container" style="background-color: rgba(255,255,255,0.5); padding-top: 40px; min-height: 80%; ">
+		@if ($errors->any())
+			<div class="col-md-8" style="padding: 10px;">
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+		@endif
+		@if(session()->has('message.level'))
+			<div class="col-md-8" style="padding: 10px;">
+				<div class="alert alert-{{ session('message.level') }}">
+					{!! session('message.content') !!}
+				</div>
+			</div>
+		@endif
 		<!--Card image-->
 		<div class="card card-cascade narrower">
 		<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">

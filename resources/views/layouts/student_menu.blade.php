@@ -151,6 +151,6 @@
 <!-- Bootstrap -->
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <!-- MDB -->
-<script type="text/javascript" src="/js/mdb.min.js"></script>
+<script type="text/javascript" src="/js/mdb.js"></script>
 <!-- App -->
 <script src="{{ asset('js/app.js') }}"></script>

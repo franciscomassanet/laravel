@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/classrooms', function () {
+    return view('classrooms');
+});
+
 
 
 Route::get('signin', 'Auth\LoginController@redirectToProvider');
@@ -26,6 +30,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::get('/teachers', 'admin@teachers')->middleware('auth');
 Route::post('/add/teacher', 'admin@store')->middleware('auth');
+Route::post('/add/classroom', 'admin@add_classroom')->middleware('auth');
 Route::post('/add/course', 'admin@store_course')->middleware('auth');
 Route::get('/insert_course', 'admin@insert_course')->middleware('auth');
 

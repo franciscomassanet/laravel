@@ -109,6 +109,27 @@ class admin extends Controller
     }
 
     /**
+     * add new classroom
+     */
+    public function add_classroom(Request $request)
+    {
+        //
+        $id = Auth::user()->email;
+
+        $this->validate($request, array(
+            'class_name' => 'required',
+            'code' => 'required|unique:classrooms',
+        ));
+
+        DB::table('classrooms')->insert(['teacher' => $id, 'class_name' => $request->class_name, 'code' => $request->code]);
+
+        $request->session()->flash('message.level', 'success');
+        $request->session()->flash('message.content', 'Completed Successfully !');
+
+        return redirect('classrooms');
+    }
+
+    /**
      *
      */
     public function show(Post $post)

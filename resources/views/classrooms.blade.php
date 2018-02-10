@@ -80,7 +80,7 @@
 		<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
 			<div align="center">
-				<span class="white-text mx-3"><h1>Teacher Management</h1></span>
+				<span class="white-text mx-3"><h1>Classrooms</h1></span>
 			</div>
 
 		</div>
@@ -97,41 +97,23 @@
 
 							<!--Header-->
 							<div class="text-center">
-								<h3 class="pink-text mb-5"><strong>Edit Teachers</strong></h3>
+								<h3 class="pink-text mb-5"><strong>Create New Classroom</strong></h3>
 							</div>
 
-							<form method="post" action="add/teacher" enctype="multipart/form-data">
+							<form method="post" action="add/classroom" enctype="multipart/form-data">
 							{{ csrf_field() }}
 							<!--Body-->
 								<div class="md-form">
-									<input name="email" type="email" id="email" class="form-control">
-									<label for="email">Teacher email</label>
+									<input name="class_name" type="text" id="class_name" class="form-control">
+									<label for="class_name">Classroom Name</label>
 								</div>
 
-								<div class="md-form pb-3">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group ">
-												<input name="add" type="checkbox" id="checkbox">
-												<label for="checkbox" class="grey-text">Add teacher</label>
-											</div>
-											<div class="form-group">
-												<input name="delete" type="checkbox" id="checkbox2">
-												<label for="checkbox2" class="grey-text">Delete teacher</label>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<input name="admin" type="checkbox" id="checkbox3">
-												<label for="checkbox3" class="grey-text">Add Admin User</label>
-											</div>
-											<div class="form-group">
-												<input name="delete_admin" type="checkbox" id="checkbox4">
-												<label for="checkbox4" class="grey-text">Delete Admin User</label>
-											</div>
-										</div>
-									</div>
+								<div class="md-form">
+									<input name="code" type="text" id="code" class="form-control">
+									<label for="code">Classroom Code</label>
 								</div>
+
+
 
 								<!--Grid row-->
 								<div class="row d-flex align-items-center mb-4">
@@ -139,7 +121,7 @@
 									<!--Grid column-->
 									<div class="col-md-4"></div>
 									<div class="col-md-4 text-center">
-										<input type="submit" value="Submit" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
+										<input type="submit" value="Create New Classroom" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
 									</div>
 									<!--Grid column-->
 
@@ -163,7 +145,7 @@
 					<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
 						<div>
-							<span class='white-text mx-3'><h1>Active Teachers</h1></span>
+							<span class='white-text mx-3'><h1>My Classrooms</h1></span>
 						</div>
 
 					</div>
@@ -178,7 +160,8 @@
 								<thead align="center">
 								<tr>
 									<th class="th-lg" style="font-weight: bold;">Name</th>
-									<th class="th-lg" style="font-weight: bold;">Email</th>
+									<th class="th-lg" style="font-weight: bold;">Code</th>
+									<th class="th-lg" style="font-weight: bold;">Students</th>
 								</tr>
 								</thead>
 								<!--Table head-->
@@ -187,14 +170,17 @@
 								<tbody>
 								<tr>
 									<?php
-										$qrys = DB::table('users')->WHERE('is_teacher', '>=', 1)->get();
+
+										$id = Auth::user()->email;
+										$qrys = DB::table('classrooms')->WHERE('teacher', $id)->get();
 
 										foreach ($qrys AS $qry){
 
 												echo "
 												<tr>
-													<td>{$qry->name}</td>
-													<td>{$qry->email}</td>
+													<td>{$qry->class_name}</td>
+													<td>{$qry->code}</td>
+													<td>{$qry->id}</td>
 												</tr>
 												";
 										};
@@ -208,63 +194,6 @@
 						</div>
 					</div>
 
-				</div>
-			</div>
-
-			<div class="col-md-12" >
-
-				<div class="card card-cascade narrower" style="margin-bottom: 20px;">
-
-
-					<!--Card image-->
-					<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
-
-						<div>
-							<span class='white-text mx-3'><h1>Admin Users</h1></span>
-						</div>
-
-					</div>
-					<!--/Card image-->
-
-
-					<div class="px-4" style="margin-bottom: 20px;">
-						<div class="table-wrapper">
-							<!--Table-->
-							<table class="table table-hover mb-0" >
-
-								<!--Table head-->
-								<thead align="center">
-								<tr>
-									<th class="th-lg" style="font-weight: bold;">Name</th>
-									<th class="th-lg" style="font-weight: bold;">Email</th>
-								</tr>
-								</thead>
-								<!--Table head-->
-
-								<!--Table body-->
-								<tbody>
-								<tr>
-                                    <?php
-                                    $qrys = DB::table('users')->WHERE('is_teacher', '>=', 2)->get();
-
-                                    foreach ($qrys AS $qry){
-
-                                        echo "
-												<tr>
-													<td>{$qry->name}</td>
-													<td>{$qry->email}</td>
-												</tr>
-												";
-                                    };
-                                    ?>
-
-								</tr>
-								</tbody>
-								<!--Table body-->
-							</table>
-							<!--Table-->
-						</div>
-					</div>
 				</div>
 			</div>
 

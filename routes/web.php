@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Google;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,13 @@ Route::get('/', function () {
 
 Route::get('/classrooms', function () {
     return view('classrooms');
+});
+
+
+Route::get('/test', function () {
+
+    //dump($calendar);
+    return view('test');
 });
 
 

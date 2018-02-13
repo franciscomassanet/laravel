@@ -17,9 +17,9 @@ return [
     | https://developers.google.com/console
     |
     */
-    'client_id'       => env('791908156105-fvv5qtqplfrqr3usiu4dhgo0uic5d61o.apps.googleusercontent.com', ''),
-    'client_secret'   => env('1Ms9D7_gprWblmJ4jPHCxPlK', ''),
-    'redirect_uri'    => env('blcg.innov8lcc.co.uk/home', ''),
+    'client_id'       => env('GOOGLE_CLIENT_ID', ''),
+    'client_secret'   => env('GOOGLE_CLIENT_SECRET', ''),
+    'redirect_uri'    => env('GOOGLE_REDIRECT', ''),
     'scopes'          => [],
     'access_type'     => 'online',
     'approval_prompt' => 'auto',
@@ -33,7 +33,7 @@ return [
     | a Server key, and not a Browser key.
     |
     */
-    'developer_key' => env('AIzaSyCgvGgnLXpGu7IVkzmS4FlvHZdhyusRek8', ''),
+    'developer_key' => env('GOOGLE_DEVELOPER_KEY', ''),
 
     /*
     |----------------------------------------------------------------------------

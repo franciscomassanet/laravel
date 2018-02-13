@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 		Laravel\Socialite\SocialiteServiceProvider::class,
+        PulkitJalan\Google\GoogleServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -177,6 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 
     ],
 
@@ -227,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Google' => PulkitJalan\Google\Facades\Google::class,
 
     ],
 

@@ -21,7 +21,7 @@
     <link href="/css/mdb.min.css" rel="stylesheet">
 	<!--Google Classroom API -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-client_id" content="18710928026-b53mf9bceakbnbpsurgllocfoprm878f.apps.googleusercontent.com">
+	<meta name="google-signin-client_id" content="791908156105-fvv5qtqplfrqr3usiu4dhgo0uic5d61o.apps.googleusercontent.com">
 	
 
     <style>

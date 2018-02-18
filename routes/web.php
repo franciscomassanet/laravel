@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use Google;
+//use Google;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,16 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/classrooms', function () {
-    return view('classrooms');
-});
 
 
 Route::get('/test', function () {
 
-    //dump($calendar);
     return view('test');
 });
+
+Route::get('classrooms', 'classroomController@index')->middleware('auth');
+Route::resource('classrooms', 'classroomController')->middleware('auth');
+
+Route::get('class_create', 'classroomCcreate@create')->middleware('auth');
+Route::resource('class_create', 'classroomCreate')->middleware('auth');
+
+Route::get('oauth', ['as' => 'oauthCallback', 'uses' => 'classroomController@oauth']);
+
 
 
 

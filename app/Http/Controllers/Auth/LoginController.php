@@ -6,7 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
+//use App\Http\Controllers\Auth;
+
+use Carbon\Carbon;
+use Google_Client;
 
 class LoginController extends Controller
 {
@@ -20,6 +25,7 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    protected $client;
 
     use AuthenticatesUsers;
 
@@ -40,9 +46,30 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 	
-	public function redirectToProvider()
-    {
-        return Socialite::driver('google')->redirect();
+	public function redirectToProvider(){
+
+        $client = new Google_Client();
+        $client->setAuthConfig('client_secret.json');
+
+        // Google scopes
+        $client->addScope( \Google_Service_Calendar::CALENDAR);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_COURSES);
+        $client->addScope( \Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS);
+        $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME);
+        $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME_READONLY);
+        $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_STUDENTS);
+        $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_STUDENTS_READONLY);
+
+        $this->client = $client;
+        session_start();
+        if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+            $this->client->setAccessToken($_SESSION['access_token']);
+            return Socialite::driver('google')->redirect();
+
+        } else {
+            return Socialite::driver('google')->redirect();
+        }
+
     }
 
     /**

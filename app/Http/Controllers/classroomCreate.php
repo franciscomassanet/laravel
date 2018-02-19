@@ -18,6 +18,9 @@ class classroomCreate extends Controller
         // Google scopes
         $client->addScope( \Google_Service_Calendar::CALENDAR);
         $client->addScope(\Google_Service_Classroom::CLASSROOM_COURSES);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_PROFILE_EMAILS);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_PROFILE_PHOTOS);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_ROSTERS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME_READONLY);
@@ -41,10 +44,10 @@ class classroomCreate extends Controller
             $this->client->setAccessToken($_SESSION['access_token']);
             $service = new \Google_Service_Classroom($this->client);
             $optParams = array(
-                'courseId'=> '11091540235',
-                'text' => 'help me'
+                'courseId'=> '9823550101',
+                'pageSize'=> 10
             );
-            $results = $service->courses_announcements->create($optParams);
+            $results = $service->courses_students->listCoursesStudents( 9823550101, $optParams);
             dump($results);
 
         } else {

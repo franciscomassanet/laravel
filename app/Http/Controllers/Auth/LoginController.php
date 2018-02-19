@@ -54,6 +54,9 @@ class LoginController extends Controller
         // Google scopes
         $client->addScope( \Google_Service_Calendar::CALENDAR);
         $client->addScope(\Google_Service_Classroom::CLASSROOM_COURSES);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_PROFILE_EMAILS);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_PROFILE_PHOTOS);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_ROSTERS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME_READONLY);

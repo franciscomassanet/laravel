@@ -30,7 +30,7 @@ Route::get('/test', function () {
 Route::get('classrooms', 'classroomController@index')->middleware('auth');
 Route::resource('classrooms', 'classroomController')->middleware('auth');
 
-Route::get('class_create', 'classroomCcreate@create')->middleware('auth');
+Route::get('class/{id}', 'classes@index')->middleware('auth');
 Route::resource('class_create', 'classroomCreate')->middleware('auth');
 
 Route::get('oauth', ['as' => 'oauthCallback', 'uses' => 'classroomController@oauth']);
@@ -45,9 +45,6 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 Route::get('/teachers', 'admin@teachers')->middleware('auth');
 Route::post('/add/teacher', 'admin@store')->middleware('auth');
-Route::post('/add/classroom', 'admin@add_classroom')->middleware('auth');
-Route::post('/add/course', 'admin@store_course')->middleware('auth');
-Route::get('/insert_course', 'admin@insert_course')->middleware('auth');
 
 Route::get('insert/{CourseID}/{CourseName}/{Results}/{Grade}/{Email}/{Duration}', 'insert@insert');
 

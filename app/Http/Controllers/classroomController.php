@@ -21,6 +21,9 @@ class classroomController extends Controller
         // Google scopes
         $client->addScope( \Google_Service_Calendar::CALENDAR);
         $client->addScope(\Google_Service_Classroom::CLASSROOM_COURSES);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_PROFILE_EMAILS);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_PROFILE_PHOTOS);
+        $client->addScope(\Google_Service_Classroom::CLASSROOM_ROSTERS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME_READONLY);
@@ -55,23 +58,7 @@ class classroomController extends Controller
             return redirect()->route('oauthCallback');
         }
 
-        //session_start();
-        //if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-        //    $this->client->setAccessToken($_SESSION['access_token']);
-        //    $service = new \Google_Service_Classroom($this->client);
-        //    $optParams = array(
-        //        'courseStates' => "ACTIVE",
-        //        'pageSize' => 10
-        //    );
-        //    $results = $service->courses->listCourses($optParams);
-        //    $items = $results->getCourses();
 
-            //dump($items);
-        //    return view('classrooms')->with('items',$items);
-            //return $results->getItems();
-        //} else {
-        //    return redirect()->route('oauthCallback');
-        //}
     }
     public function oauth()
     {

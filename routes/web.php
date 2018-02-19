@@ -20,17 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::get('/test', function () {
-
-    return view('test');
+Route::get('/insert', function () {
+    return view('insert_course');
 });
 
 Route::get('classrooms', 'classroomController@index')->middleware('auth');
 Route::resource('classrooms', 'classroomController')->middleware('auth');
 
-Route::get('class/{id}', 'classes@index')->middleware('auth');
+Route::get('class/{id}/{name}', 'classes@index')->middleware('auth');
 Route::resource('class_create', 'classroomCreate')->middleware('auth');
 
 Route::get('oauth', ['as' => 'oauthCallback', 'uses' => 'classroomController@oauth']);

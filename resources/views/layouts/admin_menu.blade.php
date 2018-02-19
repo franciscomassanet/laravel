@@ -13,15 +13,18 @@
 	
     <title>BLC G-Suite edition</title>
 
-    <!-- Font Awesome -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design for Bootstrap -->
     <link href="/css/mdb.min.css" rel="stylesheet">
 	<!--Google Classroom API -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Font Awesome -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 	<meta name="google-signin-client_id" content="791908156105-fvv5qtqplfrqr3usiu4dhgo0uic5d61o.apps.googleusercontent.com">
 	
 
@@ -115,7 +118,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li><a href="/myResults" class="dropdown-item">My Results</a></li>
-                                    <li><a href="/myClassrooms" class="dropdown-item">My Classrooms</a></li>
+                                    <li><a href="/classrooms" class="dropdown-item">My Classrooms</a></li>
                                     <li><a href="/teachers" class="dropdown-item">Manage Teachers</a></li>
                                     <li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>
                                     <li>

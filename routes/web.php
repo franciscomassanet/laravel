@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/insert', function () {
+Route::get('/newCourse', function () {
     return view('insert_course');
 });
 
@@ -49,6 +49,21 @@ Route::get('/subjects', 'courses@subjects')->middleware('auth');
 Route::get('/subject_area/{slug}', 'courses@courses')->middleware('auth');
 Route::get('/lessons/{slug}/{course}', "contents@index")->middleware('auth');
 
-Route::get('/myResults', 'myResults@results')->middleware('auth');
+
 Route::get('/myClassrooms', 'myClasses@classes');
+
+//Results Sorting
+Route::get('/resultsOrderSubjectDesc', 'myResults@resultsBySubjectDesc');
+Route::get('/resultsOrderSubject', 'myResults@resultsBySubject');
+Route::get('/resultsOrderCourseDesc', 'myResults@resultsByCourseDesc');
+Route::get('/resultsOrderCourse', 'myResults@resultsByCourse');
+Route::get('/resultsOrderResultsDesc', 'myResults@resultsByResultsDesc');
+Route::get('/resultsOrderResults', 'myResults@resultsByResults');
+Route::get('/resultsOrderScoreDesc', 'myResults@resultsByScoreDesc');
+Route::get('/resultsOrderScore', 'myResults@resultsByScore');
+Route::get('/resultsOrderDurationDesc', 'myResults@resultsByDurationDesc');
+Route::get('/resultsOrderDuration', 'myResults@resultsByDuration');
+Route::get('/resultsOrderDateDesc', 'myResults@resultsByDateDesc');
+Route::get('/resultsOrderDate', 'myResults@resultsByDate');
+Route::get('/myResults', 'myResults@results')->middleware('auth');
 

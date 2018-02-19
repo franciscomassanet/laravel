@@ -2,6 +2,8 @@
 
 @extends('layouts.admin_menu')
 
+
+
 <style>
     body {
         background-image: url("/img/wallpapers/topBanner.jpg");
@@ -53,7 +55,7 @@
                     <div class="px-4" style="margin-bottom: 40px;">
                         <div class="table-wrapper">
                             <!--Table-->
-                            <table class="table table-hover mb-0" >
+                            <table id="example" class="table table-hover mb-0 table-responsive" >
 
                                 <!--Table head-->
                                 <thead align="center">
@@ -90,30 +92,6 @@
                                 <!--Table body-->
                             </table>
                             <!--Table-->
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-12" >
-
-                <div class="card card-cascade narrower" style="margin-bottom: 20px;">
-
-                    <!--Card image-->
-                    <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
-
-                        <div>
-                            <span class='white-text mx-3'><h1>Create Class</h1></span>
-                        </div>
-
-                    </div>
-                    <!--/Card image-->
-
-                    <div class="px-4" style="margin-bottom: 40px;">
-                        <div class="table-wrapper">
-                            <a href="classCreate"><button class="btn btn-primary">New course</button></a>
-
                         </div>
                     </div>
 

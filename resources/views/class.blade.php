@@ -5,10 +5,10 @@
 <?php
 
 
-foreach ($items as $item){
+foreach ($results as $item){
 
     //dump($item);
-    echo $item->name, " - ", $item->enrollmentCode, " - ", $item->section , "<br>";
+    echo $item->profile->name->fullName, " - ", $item->profile->emailAddress, " - ", $item->profile->photoUrl , "<br>";
 }
 
 ?>

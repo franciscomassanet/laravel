@@ -95,7 +95,7 @@
 									<td>{$qry->CourseName}</td>
 									<td>{$qry->Results}</td>
 									<td>{$qry->Grade}</td>
-									<td>{$qry->Duration}</td>
+									<td>{$qry->Duration} Minutes</td>
 									<td>{$qry->Date}</td>
 								</tr>
 							";

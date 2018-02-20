@@ -85,6 +85,9 @@
 					<tr>
                         <?php
 
+							$id = app('Illuminate\Contracts\Auth\Guard')->user()->id;
+
+							if()
 
                         foreach ($qrys AS $qry){
                             echo "

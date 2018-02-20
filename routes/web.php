@@ -28,7 +28,6 @@ Route::get('classrooms', 'classroomController@index')->middleware('auth');
 Route::resource('classrooms', 'classroomController')->middleware('auth');
 
 Route::get('class/{id}/{name}', 'classes@index')->middleware('auth');
-Route::resource('class_create', 'classroomCreate')->middleware('auth');
 
 Route::get('oauth', ['as' => 'oauthCallback', 'uses' => 'classroomController@oauth']);
 
@@ -50,6 +49,7 @@ Route::get('/subject_area/{slug}', 'courses@courses')->middleware('auth');
 Route::get('/lessons/{slug}/{course}', "contents@index")->middleware('auth');
 
 
+Route::get('/myResults/', 'myResults@results')->middleware('auth');
 Route::get('/myClassrooms', 'myClasses@classes');
 
 //Results Sorting
@@ -65,5 +65,6 @@ Route::get('/resultsOrderDurationDesc', 'myResults@resultsByDurationDesc');
 Route::get('/resultsOrderDuration', 'myResults@resultsByDuration');
 Route::get('/resultsOrderDateDesc', 'myResults@resultsByDateDesc');
 Route::get('/resultsOrderDate', 'myResults@resultsByDate');
-Route::get('/myResults', 'myResults@results')->middleware('auth');
+
+
 

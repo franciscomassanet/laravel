@@ -63,7 +63,6 @@
                                     <th class="th-lg" style="font-weight: bold;">Photo</th>
                                     <th class="th-lg" style="font-weight: bold;">Name</th>
                                     <th class="th-lg" style="font-weight: bold;">email</th>
-                                    <th class="th-lg" style="font-weight: bold;">Grades</th>
                                 </tr>
                                 </thead>
                                 <!--Table head-->
@@ -78,10 +77,9 @@
 
                                         echo "
 												<tr>
-													<td><img src='{$item->profile->photoUrl}' alt='' style='max-height: 50px;'></td>
+													<td><a href='/studentResults/{$item->profile->emailAddress}'><img src='{$item->profile->photoUrl}' alt='' style='max-height: 50px;'></a></td>
 													<td>{$item->profile->name->fullName}</td>
 													<td>{$item->profile->emailAddress}</td>
-													<td><a href='' target='_blank'><i class='fas fa-link'></i></a></td>
 												</tr>
 												";
                                     };

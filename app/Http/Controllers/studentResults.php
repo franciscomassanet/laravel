@@ -13,40 +13,40 @@ use Illuminate\Contracts\Auth\Guard;
 class studentResults extends Controller
 {
     //
-	public function results()
+	public function results($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
             ->get()->where('Email', $user);
 
-        //dump($user);
-        //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+
+        //dump($view);
+        //dump($name);
+        return view("studentResults", ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 	  
 	}
 
-    public function resultsBySubject()
+    public function resultsBySubject($email)
     {
-
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
-            ->get()->where('Email', $user)->sortBy('CourseID');
+            ->get()->where('Email', $email)->sortBy('CourseID');
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view("studentResults", ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsBySubjectDesc()
+    public function resultsBySubjectDesc($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -54,14 +54,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view("studentResults", ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-	public function resultsByCourse()
+	public function resultsByCourse($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -69,14 +69,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsByCourseDesc()
+    public function resultsByCourseDesc($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -84,14 +84,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-	public function resultsByResults()
+	public function resultsByResults($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -99,14 +99,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsByResultsDesc()
+    public function resultsByResultsDesc($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -114,14 +114,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-	public function resultsByScore()
+	public function resultsByScore($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -129,14 +129,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsByScoreDesc()
+    public function resultsByScoreDesc($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -144,14 +144,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-	public function resultsByDuration()
+	public function resultsByDuration($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -159,14 +159,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsByDurationDesc()
+    public function resultsByDurationDesc($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -174,14 +174,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsByDate()
+    public function resultsByDate($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -189,14 +189,14 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 
-    public function resultsByDateDesc()
+    public function resultsByDateDesc($email)
     {
 
-        $user = app('Illuminate\Contracts\Auth\Guard')->user()->email;
+        $user = $email;
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
@@ -204,7 +204,7 @@ class studentResults extends Controller
 
         //dump($user);
         //dump($qrys);
-        return view('myResults', ['qrys'=>$qrys, 'user'=>$user ]);
+        return view('studentResults', ['qrys'=>$qrys, 'user'=>$user, 'email'=>$email ]);
 
     }
 }

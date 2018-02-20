@@ -50,9 +50,10 @@ Route::get('/lessons/{slug}/{course}', "contents@index")->middleware('auth');
 
 
 Route::get('/myResults/', 'myResults@results')->middleware('auth');
+Route::get('/studentResults/{email}', 'studentResults@results')->middleware('auth');
 Route::get('/myClassrooms', 'myClasses@classes');
 
-//Results Sorting
+//my Results Sorting
 Route::get('/resultsOrderSubjectDesc', 'myResults@resultsBySubjectDesc');
 Route::get('/resultsOrderSubject', 'myResults@resultsBySubject');
 Route::get('/resultsOrderCourseDesc', 'myResults@resultsByCourseDesc');
@@ -65,6 +66,21 @@ Route::get('/resultsOrderDurationDesc', 'myResults@resultsByDurationDesc');
 Route::get('/resultsOrderDuration', 'myResults@resultsByDuration');
 Route::get('/resultsOrderDateDesc', 'myResults@resultsByDateDesc');
 Route::get('/resultsOrderDate', 'myResults@resultsByDate');
+
+//Teacher view of students results Sorting
+Route::get('/studentResultsOrderSubjectDesc/{email}', 'studentResults@resultsBySubjectDesc');
+Route::get('/studentResultsOrderSubject/{email}', 'studentResults@resultsBySubject');
+Route::get('/studentResultsOrderCourseDesc/{email}', 'studentResults@resultsByCourseDesc');
+Route::get('/studentResultsOrderCourse/{email}', 'studentResults@resultsByCourse');
+Route::get('/studentResultsOrderResultsDesc/{email}', 'studentResults@resultsByResultsDesc');
+Route::get('/studentResultsOrderResults/{email}', 'studentResults@resultsByResults');
+Route::get('/studentResultsOrderScoreDesc/{email}', 'studentResults@resultsByScoreDesc');
+Route::get('/studentResultsOrderScore/{email}', 'studentResults@resultsByScore');
+Route::get('/studentResultsOrderDurationDesc/{e
+mail}', 'studentResults@resultsByDurationDesc');
+Route::get('/studentResultsOrderDuration/{email}', 'studentResults@resultsByDuration');
+Route::get('/studentResultsOrderDateDesc/{email}', 'studentResults@resultsByDateDesc');
+Route::get('/studentResultsOrderDate/{email}', 'studentResults@resultsByDate');
 
 
 

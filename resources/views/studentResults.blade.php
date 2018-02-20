@@ -52,8 +52,8 @@
 			<div>
 			</div>
             <?php
-            $user = app('Illuminate\Contracts\Auth\Guard')->user()->name;
-            echo "<span class='white-text mx-3'><h1>Course Results for {$user}</h1></span>"
+            $name = DB::table('users')->where('email', $email)->pluck('name')->first();
+            echo "<span class='white-text mx-3'><h1>Course Results for $name</h1></span>"
             ?>
 			<div>
 			</div>
@@ -70,12 +70,12 @@
 					<!--Table head-->
 					<thead align="center">
 					<tr>
-						<th class="th-lg" style="font-weight: bold;">Subject&nbsp;&nbsp;<a href="/resultsOrderSubjectDesc"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/resultsOrderSubject"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
-						<th class="th-lg" style="font-weight: bold;">Course&nbsp;&nbsp;<a href="/resultsOrderCourseDesc"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/resultsOrderCourse"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
-						<th class="th-lg" style="font-weight: bold;">Result&nbsp;&nbsp;<a href="/resultsOrderResultsDesc"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/resultsOrderResults"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
-						<th class="th-lg" style="font-weight: bold;">Score&nbsp;&nbsp;<a href="/resultsOrderScoreDesc"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/resultsOrderScore"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
-						<th class="th-lg" style="font-weight: bold;">Duration&nbsp;&nbsp;<a href="/resultsOrderDurationDesc"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/resultsOrderDuration"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
-						<th class="th-lg" style="font-weight: bold;">Date&nbsp;&nbsp;<a href="/resultsOrderDateDesc"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/resultsOrderDate"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
+						<th class="th-lg" style="font-weight: bold;">Subject&nbsp;&nbsp;<a href="/studentResultsOrderSubjectDesc/{{$email}}"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/studentResultsOrderSubject/{{$email}}"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
+						<th class="th-lg" style="font-weight: bold;">Course&nbsp;&nbsp;<a href="/studentResultsOrderCourseDesc/{{$email}}"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/studentResultsOrderCourse/{{$email}}"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
+						<th class="th-lg" style="font-weight: bold;">Result&nbsp;&nbsp;<a href="/studentResultsOrderResultsDesc/{{$email}}"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/studentResultsOrderResults/{{$email}}"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
+						<th class="th-lg" style="font-weight: bold;">Score&nbsp;&nbsp;<a href="/studentResultsOrderScoreDesc/{{$email}}"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/studentResultsOrderScore/{{$email}}"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
+						<th class="th-lg" style="font-weight: bold;">Duration&nbsp;&nbsp;<a href="/studentResultsOrderDurationDesc/{{$email}}"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/studentResultsOrderDuration/{{$email}}"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
+						<th class="th-lg" style="font-weight: bold;">Date&nbsp;&nbsp;<a href="/studentResultsOrderDateDesc/{{$email}}"><i class="fas fa-sort-amount-down fa-sm"></i></a>&nbsp;&nbsp;&nbsp;<a href="/studentResultsOrderDate/{{$email}}"><i class="fas fa-sort-amount-up fa-sm"></i></a></th>
 					</tr>
 					</thead>
 					<!--Table head-->
@@ -86,7 +86,6 @@
                         <?php
 
 							$id = app('Illuminate\Contracts\Auth\Guard')->user()->id;
-
 
 
                         foreach ($qrys AS $qry){

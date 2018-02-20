@@ -7,10 +7,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
-//use App\Http\Controllers\Auth;
-
-use Carbon\Carbon;
 use Google_Client;
 
 class LoginController extends Controller
@@ -62,6 +58,7 @@ class LoginController extends Controller
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_ME_READONLY);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_STUDENTS);
         $client->addScope( \Google_Service_Classroom::CLASSROOM_COURSEWORK_STUDENTS_READONLY);
+        $client->setHostedDomain('innov8lcc.co.uk');
 
         $this->client = $client;
         session_start();
@@ -84,19 +81,23 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 		$findUser = User::where('email', $user->getEmail())->first();
-		
+
 		if($findUser){
 			Auth::login($findUser);
 		}else {
-			$newUser = new User;
-			$newUser->email = $user->getEmail();
-			$newUser->name = $user->getName();
-			$newUser->password = bcrypt(123456);
-			$newUser-> save();
-			Auth::login($newUser);
+		    $email = $user->getEmail();
+		    if(strpos($email,  '@innov8lcc.co.uk') !== false){
+                $newUser = new User;
+                $newUser->email = $user->getEmail();
+                $newUser->name = $user->getName();
+                $newUser->password = bcrypt(123456);
+                $newUser-> save();
+                Auth::login($newUser);
+            }else{
+		        return view('access');
+            }
 		}
-		
-		//return view('home');
-        return redirect('/home');
+
+		return redirect('/home');
     }
 }

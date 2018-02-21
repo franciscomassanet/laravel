@@ -87,7 +87,7 @@
 
                         <div>
                             <span class='white-text mx-3'><h1>My Classrooms</h1></span>
-                        </div>K
+                        </div>
 
                     </div>
                     <!--/Card image-->

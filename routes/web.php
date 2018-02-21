@@ -53,6 +53,9 @@ Route::get('/myResults/', 'myResults@results')->middleware('auth');
 Route::get('/studentResults/{email}', 'studentResults@results')->middleware('auth');
 Route::get('/myClassrooms', 'myClasses@classes');
 
+//Report Routes
+Route::get('report/overview', 'reports@overview');
+
 //my Results Sorting
 Route::get('/resultsOrderSubjectDesc', 'myResults@resultsBySubjectDesc');
 Route::get('/resultsOrderSubject', 'myResults@resultsBySubject');

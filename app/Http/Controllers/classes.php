@@ -49,6 +49,8 @@ class classes extends Controller
 
                 'pageSize'=> 35
             );
+            $classId = $id;
+            $className = $name;
             $results = $service->courses_students->listCoursesStudents( $id, $optParams);
             //dump($className);
             return view('class', ['results'=> $results, 'className'=> $name]);

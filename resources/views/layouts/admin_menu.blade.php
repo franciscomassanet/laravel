@@ -102,7 +102,7 @@
                                 Reports
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="/overview">College Overview Report</a>
+                                <a class="dropdown-item" href="/reports/overview">College Overview Report</a>
                             </div>
                         </li>
                     </ul>

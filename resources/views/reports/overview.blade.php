@@ -86,52 +86,33 @@
                     <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
                         <div>
-                            <span class='white-text mx-3'><h1>My Classrooms</h1></span>
+                            <span class='white-text mx-3'><h1>College Overview Report</h1></span>
                         </div>
 
                     </div>
                     <!--/Card image-->
 
-                    <div class="px-4" style="margin-bottom: 40px;">
-                        <div class="table-wrapper">
-                            <!--Table-->
-                            <table class="table table-hover mb-0" >
-
-                                <!--Table head-->
-                                <thead align="center">
-                                <tr>
-                                    <th class="th-lg" style="font-weight: bold;">Name</th>
-                                    <th class="th-lg" style="font-weight: bold;">Join Code</th>
-                                    <th class="th-lg" style="font-weight: bold;">Students</th>
-                                    <th class="th-lg" style="font-weight: bold;">Link</th>
-                                </tr>
-                                </thead>
-                                <!--Table head-->
-
-                                <!--Table body-->
-                                <tbody>
-                                <tr>
-                                    <?php
-
-
-                                    foreach ($items AS $item){
-
-                                        echo "
-												<tr>
-													<td><a href='class/{$item->id}/{$item->name}'>{$item->name}</a></td>
-													<td>{$item->enrollmentCode}</td>
-													<td>{$item->section}</td>
-													<td><a href='{$item->alternateLink}' target='_blank'><i class='fas fa-link'></i></a></td>
-												</tr>
-												";
-                                    };
-                                    ?>
-
-                                </tr>
-                                </tbody>
-                                <!--Table body-->
-                            </table>
-                            <!--Table-->
+                    <div class="row" style="margin-bottom: 40px; padding: 20px;">
+                        <div class="col-md-4" style="padding: 20px;">
+                            <div class="card">
+                                {!! $totalHours->html() !!}
+                                {!! Charts::scripts() !!}
+                                {!! $totalHours->script() !!}
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="padding: 20px;">
+                            <div class="card">
+                                {!! $totalPass->html() !!}
+                                {!! Charts::scripts() !!}
+                                {!! $totalPass->script() !!}
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="padding: 20px;">
+                            <div class="card">
+                                {!! $totalFail->html() !!}
+                                {!! Charts::scripts() !!}
+                                {!! $totalFail->script() !!}
+                            </div>
                         </div>
                     </div>
 

@@ -58,7 +58,23 @@ class classroomController extends Controller
             return redirect()->route('oauthCallback');
         }
 
+        //session_start();
+        //if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+        //    $this->client->setAccessToken($_SESSION['access_token']);
+        //    $service = new \Google_Service_Classroom($this->client);
+        //    $optParams = array(
+        //        'courseStates' => "ACTIVE",
+        //        'pageSize' => 10
+        //    );
+        //    $results = $service->courses->listCourses($optParams);
+        //    $items = $results->getCourses();
 
+            //dump($items);
+        //    return view('classrooms')->with('items',$items);
+            //return $results->getItems();
+        //} else {
+        //    return redirect()->route('oauthCallback');
+        //}
     }
     public function oauth()
     {

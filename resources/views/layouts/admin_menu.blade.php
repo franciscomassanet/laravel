@@ -206,11 +206,10 @@
         <div class="social-section text-center">
             <ul>
 
-                <li><a class="btn-floating btn-fb"><i class="fa fa-facebook"> </i></a></li>
-                <li><a class="btn-floating btn-tw"><i class="fa fa-twitter"> </i></a></li>
-                <li><a class="btn-floating btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-                <li><a class="btn-floating btn-li"><i class="fa fa-linkedin"> </i></a></li>
-                <li><a class="btn-floating btn-dribbble"><i class="fa fa-dribbble"> </i></a></li>
+                <li><a><i class="fab fa-facebook-square fa-3x"></i></a></li>
+                <li><a><i class="fab fa-twitter-square fa-3x"></i></a></li>
+                <li><a><i class="fab fa-google-plus-square fa-3x"></i></a></li>
+                <li><a><i class="fab fa-linkedin fa-3x"></i></a></li>
 
             </ul>
         </div>
@@ -219,7 +218,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © 2017 Copyright: Square Cloud Learning LTD </a>
+                © 2018 Copyright: Square Cloud Learning LTD </a>
 
             </div>
         </div>

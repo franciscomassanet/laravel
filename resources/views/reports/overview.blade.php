@@ -2,7 +2,7 @@
 
 <style>
     body {
-        background-image: url("img/wallpapers/topBanner.jpg");
+        background-image: url("../img/wallpapers/topBanner.jpg");
         background-attachment: fixed;
         background-repeat:no-repeat;
         background-size:cover;
@@ -92,26 +92,51 @@
                     </div>
                     <!--/Card image-->
 
+                    <div class="row">
+                        <div class="col-md-12" style="padding: 30px">
+                            <img src="{{url('/img/banners/reports-banner.jpg')}}" class="img-fluid mx-auto d-block" alt="Image"/>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 col-md-6 d-flex justify-content-between align-items-center" >
+                            <div>
+                                <span class='white-text mx-3'><h1>Last 30 days</h1></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row" style="margin-bottom: 40px; padding: 20px;">
+
                         <div class="col-md-4" style="padding: 20px;">
-                            <div class="card">
+                            <div class="card text-center">
                                 {!! $totalHours->html() !!}
                                 {!! Charts::scripts() !!}
                                 {!! $totalHours->script() !!}
+                                <p>Last Month {{$prevDuration}} hours</p>
                             </div>
                         </div>
                         <div class="col-md-4" style="padding: 20px;">
-                            <div class="card">
+                            <div class="card text-center">
                                 {!! $totalPass->html() !!}
-                                {!! Charts::scripts() !!}
                                 {!! $totalPass->script() !!}
+                                <p>Last Month {{$prevPass}}</p>
                             </div>
                         </div>
                         <div class="col-md-4" style="padding: 20px;">
-                            <div class="card">
+                            <div class="card text-center">
                                 {!! $totalFail->html() !!}
-                                {!! Charts::scripts() !!}
                                 {!! $totalFail->script() !!}
+                                <p>Last Month {{$prevFail}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom: 40px; padding: 20px;">
+                            <div class="col-md-12 d-flex" style="padding: 20px;">
+                                <div class="card text-center">
+                                    {!! $year->html() !!}
+                                    {!! $year->script() !!}
+                                </div>
                             </div>
                         </div>
                     </div>

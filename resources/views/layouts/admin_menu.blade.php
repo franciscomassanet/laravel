@@ -93,13 +93,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/help">Help</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/classrooms">My Classrooms</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Reports
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="/blc_class_page.html">Teacher Report</a>
-                                <a class="dropdown-item" href="/blc_dashboard.html">College Report</a>
+                                <a class="dropdown-item" href="/overview">College Overview Report</a>
                             </div>
                         </li>
                     </ul>
@@ -118,9 +120,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li><a href="/myResults" class="dropdown-item">My Results</a></li>
-                                    <li><a href="/classrooms" class="dropdown-item">My Classrooms</a></li>
                                     <li><a href="/teachers" class="dropdown-item">Manage Teachers</a></li>
-                                    <li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>
+                                    <!--<li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>-->
                                     <li>
                                         <a href="{{ route('logout') }}" class="dropdown-item"
                                             onclick="event.preventDefault();

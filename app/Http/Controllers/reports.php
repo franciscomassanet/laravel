@@ -13,7 +13,7 @@ use Charts;
 
 class reports extends Controller
 {
-    //
+    //Used for reporting
     public function overview(){
         $date = \Carbon\Carbon::today()->subDays(30);
         $prevDate = \Carbon\Carbon::today()->subDays(60);

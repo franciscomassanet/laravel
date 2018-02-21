@@ -60,7 +60,7 @@ class reports extends Controller
             ->elementLabel("Total")
             ->dimensions(1000, 500)
             //->lastByMonth(6, true);
-            ->lastByDay(31, true);
+            ->lastByDay(30, true);
 
 
 

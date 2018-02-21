@@ -75,67 +75,8 @@
 				</div>
 			</div>
 		@endif
-		<!--Card image-->
-		<div class="card card-cascade narrower">
-		<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
-			<div align="center">
-				<span class="white-text mx-3"><h1>Classrooms</h1></span>
-			</div>
-
-		</div>
-		</div>
-		<br><br>
 		<div class="row">
-
-			<div class="col-md-12">
-				<section class="form-light">
-
-					<!--Form without header-->
-					<div class="card" style="margin-bottom: 20px;">
-						<div class="card-body mx-4">
-
-							<!--Header-->
-							<div class="text-center">
-								<h3 class="pink-text mb-5"><strong>Create New Classroom</strong></h3>
-							</div>
-
-							<form method="post" action="add/classroom" enctype="multipart/form-data">
-							{{ csrf_field() }}
-							<!--Body-->
-								<div class="md-form">
-									<input name="class_name" type="text" id="class_name" class="form-control">
-									<label for="class_name">Classroom Name</label>
-								</div>
-
-								<div class="md-form">
-									<input name="code" type="text" id="code" class="form-control">
-									<label for="code">Classroom Code</label>
-								</div>
-
-
-
-								<!--Grid row-->
-								<div class="row d-flex align-items-center mb-4">
-
-									<!--Grid column-->
-									<div class="col-md-4"></div>
-									<div class="col-md-4 text-center">
-										<input type="submit" value="Create New Classroom" class="btn btn-pink btn-block btn-rounded z-depth-1"/>
-									</div>
-									<!--Grid column-->
-
-								</div>
-								<!--Grid row-->
-							</form>
-						</div>
-
-
-					</div>
-					<!--/Form without header-->
-
-				</section>
-			</div>
 
 			<div class="col-md-12" >
 
@@ -160,8 +101,9 @@
 								<thead align="center">
 								<tr>
 									<th class="th-lg" style="font-weight: bold;">Name</th>
-									<th class="th-lg" style="font-weight: bold;">Code</th>
+									<th class="th-lg" style="font-weight: bold;">Join Code</th>
 									<th class="th-lg" style="font-weight: bold;">Students</th>
+									<th class="th-lg" style="font-weight: bold;">Link</th>
 								</tr>
 								</thead>
 								<!--Table head-->
@@ -171,16 +113,15 @@
 								<tr>
 									<?php
 
-										$id = Auth::user()->email;
-										$qrys = DB::table('classrooms')->WHERE('teacher', $id)->get();
 
-										foreach ($qrys AS $qry){
+										foreach ($items AS $item){
 
 												echo "
 												<tr>
-													<td>{$qry->class_name}</td>
-													<td>{$qry->code}</td>
-													<td>{$qry->id}</td>
+													<td><a href='class/{$item->id}/{$item->name}'>{$item->name}</a></td>
+													<td>{$item->enrollmentCode}</td>
+													<td>{$item->section}</td>
+													<td><a href='{$item->alternateLink}' target='_blank'><i class='fas fa-link'></i></a></td>
 												</tr>
 												";
 										};
@@ -196,8 +137,6 @@
 
 				</div>
 			</div>
-
-
 		</div>
 
 @endsection

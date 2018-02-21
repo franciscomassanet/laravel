@@ -13,15 +13,20 @@
 	
     <title>BLC G-Suite edition</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {!! Charts::styles() !!}
+
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design for Bootstrap -->
     <link href="/css/mdb.min.css" rel="stylesheet">
 	<!--Google Classroom API -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-client_id" content="18710928026-b53mf9bceakbnbpsurgllocfoprm878f.apps.googleusercontent.com">
+
+    <!-- Font Awesome -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+	<meta name="google-signin-client_id" content="791908156105-fvv5qtqplfrqr3usiu4dhgo0uic5d61o.apps.googleusercontent.com">
 	
 
     <style>
@@ -89,13 +94,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/help">Help</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/classrooms">My Classrooms</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Reports
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="/blc_class_page.html">Teacher Report</a>
-                                <a class="dropdown-item" href="/blc_dashboard.html">College Report</a>
+                                <a class="dropdown-item" href="/overview">College Overview Report</a>
                             </div>
                         </li>
                     </ul>
@@ -114,9 +121,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li><a href="/myResults" class="dropdown-item">My Results</a></li>
-                                    <li><a href="/myClassrooms" class="dropdown-item">My Classrooms</a></li>
                                     <li><a href="/teachers" class="dropdown-item">Manage Teachers</a></li>
-                                    <li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>
+                                    <!--<li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>-->
                                     <li>
                                         <a href="{{ route('logout') }}" class="dropdown-item"
                                             onclick="event.preventDefault();

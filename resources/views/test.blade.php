@@ -1,3 +1,5 @@
+
+
 @extends('layouts.admin_menu')
 
 <style>
@@ -90,37 +92,122 @@
 
 			<div class="col-md-12" >
 
-				<script src="https://apis.google.com/js/api.js"></script>
-				<script>
-                    function authenticate() {
-                        return gapi.auth2.getAuthInstance()
-                            .signIn({scope: "https://www.googleapis.com/auth/classroom.courses https://www.googleapis.com/auth/classroom.courses.readonly"})
-                            .then(function() { console.log("Sign-in successful"); },
-                                function(err) { console.error("Error signing in", err); });
+
+                <?php
+
+                /*************************************************
+                 * Ensure you've downloaded your oauth credentials
+                 ************************************************/
+                if (!$oauth_credentials = getOAuthCredentialsFile()) {
+                    echo missingOAuth2CredentialsWarning();
+                    return;
+                }
+                /************************************************
+                 * The redirect URI is to the current page, e.g:
+                 * http://localhost:8080/simple-file-upload.php
+                 ************************************************/
+                $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+                $client = new Google_Client();
+                $client->setAuthConfig($oauth_credentials);
+                $client->setRedirectUri($redirect_uri);
+                $client->addScope("https://www.googleapis.com/auth/drive");
+                $service = new Google_Service_Drive($client);
+                // add "?logout" to the URL to remove a token from the session
+                if (isset($_REQUEST['logout'])) {
+                    unset($_SESSION['upload_token']);
+                }
+                /************************************************
+                 * If we have a code back from the OAuth 2.0 flow,
+                 * we need to exchange that with the
+                 * Google_Client::fetchAccessTokenWithAuthCode()
+                 * function. We store the resultant access token
+                 * bundle in the session, and redirect to ourself.
+                 ************************************************/
+                if (isset($_GET['code'])) {
+                    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+                    $client->setAccessToken($token);
+                    // store in the session also
+                    $_SESSION['upload_token'] = $token;
+                    // redirect back to the example
+                    header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+                }
+                // set the access token as part of the client
+                if (!empty($_SESSION['upload_token'])) {
+                    $client->setAccessToken($_SESSION['upload_token']);
+                    if ($client->isAccessTokenExpired()) {
+                        unset($_SESSION['upload_token']);
                     }
-                    function loadClient() {
-                        return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/classroom/v1/rest")
-                            .then(function() { console.log("GAPI client loaded for API"); },
-                                function(err) { console.error("Error loading GAPI client for API", err); });
+                } else {
+                    $authUrl = $client->createAuthUrl();
+                }
+                /************************************************
+                 * If we're signed in then lets try to upload our
+                 * file. For larger files, see fileupload.php.
+                 ************************************************/
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && $client->getAccessToken()) {
+                    // We'll setup an empty 1MB file to upload.
+                    DEFINE("TESTFILE", 'testfile-small.txt');
+                    if (!file_exists(TESTFILE)) {
+                        $fh = fopen(TESTFILE, 'w');
+                        fseek($fh, 1024 * 1024);
+                        fwrite($fh, "!", 1);
+                        fclose($fh);
                     }
-                    // Make sure the client is loaded and sign-in is complete before calling this method.
-                    function execute() {
-                        return gapi.client.classroom.courses.list({
-                            "courseStates": null,
-                            "teacherId": "me"
-                        })
-                            .then(function(response) {
-                                    // Handle the results here (response.result has the parsed body).
-                                    console.log("Response", response);
-                                },
-                                function(err) { console.error("Execute error", err); });
-                    }
-                    gapi.load("client:auth2", function() {
-                        gapi.auth2.init({client_id: YOUR_CLIENT_ID});
-                    });
-				</script>
-				<button onclick="authenticate().then(loadClient)">authorize and load</button>
-				<button onclick="execute()">execute</button>
+                    // This is uploading a file directly, with no metadata associated.
+                    $file = new Google_Service_Drive_DriveFile();
+                    $result = $service->files->create(
+                        $file,
+                        array(
+                            'data' => file_get_contents(TESTFILE),
+                            'mimeType' => 'application/octet-stream',
+                            'uploadType' => 'media'
+                        )
+                    );
+                    // Now lets try and send the metadata as well using multipart!
+                    $file = new Google_Service_Drive_DriveFile();
+                    $file->setName("Hello World!");
+                    $result2 = $service->files->create(
+                        $file,
+                        array(
+                            'data' => file_get_contents(TESTFILE),
+                            'mimeType' => 'application/octet-stream',
+                            'uploadType' => 'multipart'
+                        )
+                    );
+                }
+                ?>
+
+				<div class="box">
+                    <?php if (isset($authUrl)): ?>
+					<div class="request">
+						<a class='login' href='<?= $authUrl ?>'>Connect Me!</a>
+					</div>
+                    <?php elseif($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+					<div class="shortened">
+						<p>Your call was successful! Check your drive for the following files:</p>
+						<ul>
+							<li><a href="https://drive.google.com/open?id=<?= $result->id ?>" target="_blank"><?= $result->name ?></a></li>
+							<li><a href="https://drive.google.com/open?id=<?= $result2->id ?>" target="_blank"><?= $result2->name ?></a></li>
+						</ul>
+					</div>
+                    <?php else: ?>
+					<form method="POST">
+						<input type="submit" value="Click here to upload two small (1MB) test files" />
+					</form>
+                    <?php endif ?>
+				</div>
+
+                <?= pageFooter(__FILE__) ?>
+
+
+
+			</div>
+		</div>
+
+			<div>
+				<h1>Laravel test</h1>
+
+
 			</div>
 
 

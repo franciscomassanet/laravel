@@ -1,4 +1,4 @@
-@extends('layouts.admin_menu')
+@extends('layouts.student_menu')
 
 @section('content')
 

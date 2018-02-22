@@ -91,7 +91,7 @@
                         foreach ($qrys AS $qry){
                             echo "
 								<tr>
-									<td>{$qry->CourseID}</td>
+									<td><a href='/reports/student/$email'>{$qry->CourseID}</a></td>
 									<td>{$qry->CourseName}</td>
 									<td>{$qry->Results}</td>
 									<td>{$qry->Grade}</td>

@@ -71,7 +71,10 @@
             </div>
         </nav>
 
+        <body oncontextmenu="return false">
         @yield('content')
+
+        </body>
     </div>
 		
 

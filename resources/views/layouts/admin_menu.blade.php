@@ -152,10 +152,10 @@
 <!--Main Layout-->
     <main>
         <div class="container">
-		
-		@yield('content')
-		
-		
+            <body oncontextmenu="return false">
+            @yield('content')
+
+            </body>
 		</div>
     </main>
 <!--Main Layout-->	

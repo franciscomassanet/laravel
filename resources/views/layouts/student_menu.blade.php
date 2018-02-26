@@ -105,17 +105,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/home" class="dropdown-item">Home</a></li>
                                 <li><a href="/myResults" class="dropdown-item">My Results</a></li>
-                                <li>
-                                    <a href="{{ route('logout') }}" class="dropdown-item"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
                             </ul>
                         </li>
                     @endguest
@@ -134,10 +124,10 @@
 <!--Main Layout-->
 <main>
     <div class="container">
-
+        <body oncontextmenu="return false">
         @yield('content')
 
-
+        </body>
     </div>
 </main>
 <!--Main Layout-->

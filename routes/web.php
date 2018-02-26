@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/teach', 'classroomCreate@index');
 
 Route::get('/newCourse', function () {
     return view('insert_course');
@@ -33,7 +37,8 @@ Route::get('oauth', ['as' => 'oauthCallback', 'uses' => 'classroomController@oau
 
 
 
-Route::get('signin', 'Auth\LoginController@redirectToProvider')->name('signin');
+Route::get('signin', 'Auth\LoginController@redirectToProvider')->name(
+    'signin');
 Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

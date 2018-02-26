@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Google_Client;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Null_;
+use function PHPSTORM_META\type;
 
 class classroomCreate extends Controller
 {
@@ -43,12 +44,29 @@ class classroomCreate extends Controller
         if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
             $this->client->setAccessToken($_SESSION['access_token']);
             $service = new \Google_Service_Classroom($this->client);
-            $optParams = array(
-                'courseId'=> '9823550101',
-                'pageSize'=> 10
+            $optParams = array();
+            $postBody = new \Google_Service_Classroom_CourseWork(
+                array(
+
+                    'courseId'=> '9823550101',
+                    'associatedWithDeveloper'=> true,
+                    'description'=> "a test description with You tube video",
+                    'state'=> "PUBLISHED",
+                    'title'=> "test with youtube",
+                    'maxPoints'=> 50,
+                    'materials'=>[
+                        'link'=>[
+                            'url'=> 'http://blcg.innov8lcc.co.uk/lessons/childcare/c2b',
+                        ],
+                    ],
+                    'workType'=> "ASSIGNMENT"
+                )
             );
-            $results = $service->courses_students->listCoursesStudents( 9823550101, $optParams);
+
+
+            $results = $service->courses_courseWork->create( '9823550101', $postBody, $optParams );
             dump($results);
+
 
         } else {
             return redirect()->route('oauthCallback');

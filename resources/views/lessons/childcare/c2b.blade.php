@@ -3,5 +3,9 @@
 @extends('layouts.student_menu')
 
 @section('content')
-	<iframe src="http://blcg.innov8lcc.co.uk/storage/childcare/c2b/story.html" width="100%" height="95%" scrolling="no" style="overflow:hidden; border: 0;"></iframe>
+
+
+	<iframe src="http://blcg.innov8lcc.co.uk/storage/childcare/c2b/story.html" id="iframe" width="100%" height="95%" scrolling="no" style="overflow:hidden; border: 0;"></iframe>
+
+
 @endsection

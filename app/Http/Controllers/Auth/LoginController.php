@@ -86,15 +86,14 @@ class LoginController extends Controller
 			Auth::login($findUser);
 		}else {
 		    $email = $user->getEmail();
-		    if(strpos($email,  '@innov8lcc.co.uk') !== false){
+
+		    if(strpos($email,  '@innov8lcc.co.uk') !== false) {
                 $newUser = new User;
                 $newUser->email = $user->getEmail();
                 $newUser->name = $user->getName();
                 $newUser->password = bcrypt(123456);
-                $newUser-> save();
+                $newUser->save();
                 Auth::login($newUser);
-            }else{
-		        return view('access');
             }
 		}
 

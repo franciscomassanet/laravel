@@ -61,9 +61,13 @@ class reports extends Controller
             ->dimensions(1020, 500)
             ->lastByDay(30, true);
 
+        $totalCourses = DB::table('results')->distinct()->orderBy('CourseName', 'ASC')->get(['CourseName']);
 
 
-        return view('reports.overview', ['totalHours' => $totalHours, 'totalPass' => $totalPass, 'totalFail' => $totalFail, 'prevDuration' => $prevDuration, 'prevPass' => $prevPass, 'prevFail' => $prevFail, 'year' => $year]);
+        return view('reports.overview', ['totalHours' => $totalHours, 'totalPass' => $totalPass, 'totalFail' => $totalFail,
+            'prevDuration' => $prevDuration, 'prevPass' => $prevPass, 'prevFail' => $prevFail, 'year' => $year,
+            'totalCourses'=> $totalCourses
+        ]);
     }
 
     //Used for reporting student results

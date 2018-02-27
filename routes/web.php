@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/teach', 'classroomCreate@index');
-Route::get('/sub', 'classroomCreate@sub');
+Route::get('/log', 'Auth\login@handleProviderCallback');
 
 Route::get('/newCourse', function () {
     return view('insert_course');

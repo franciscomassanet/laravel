@@ -139,6 +139,60 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row" style="padding-top: 10px;">
+                            <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 col-md-12 d-flex justify-content-between align-items-center" >
+                                <div>
+                                    <span class='white-text mx-3'><h1>Course grades in the last year</h1></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom: 40px; padding: 20px;">
+                            <div class="col-md-12  d-flex justify-content-between align-items-center" style="padding: 20px;">
+                                <div class="card text-center flex" style="margin-bottom: 40px;">
+                                <div class="table-wrapper">
+                                    <!--Table-->
+                                    <table class="table table-hover mb-0" >
+
+                                        <!--Table head-->
+                                        <thead align="center">
+                                        <tr>
+                                            <th class="th-lg" style="font-weight: bold;">Course Name</th>
+                                            <th class="th-lg" style="font-weight: bold;">Passes</th>
+                                            <th class="th-lg" style="font-weight: bold;">Fails</th>
+                                        </tr>
+                                        </thead>
+                                        <!--Table head-->
+
+                                        <!--Table body-->
+                                        <tbody>
+                                        <tr>
+                                            <?php
+
+
+                                            foreach ($totalCourses AS $item){
+                                                $totalCoursesPass = DB::table('results')->where('Grade', 'Pass')->where('CourseName', $item->CourseName)->count();
+                                                $totalCoursesFail = DB::table('results')->where('Grade', 'Fail')->where('CourseName', $item->CourseName)->count();
+                                                echo "
+												<tr>
+													<td>{$item->CourseName}</td>
+													<td>{$totalCoursesPass}</td>
+													<td>{$totalCoursesFail}</td>
+												</tr>
+												";
+                                            };
+                                            ?>
+
+                                        </tr>
+                                        </tbody>
+                                        <!--Table body-->
+                                    </table>
+                                    <!--Table-->
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

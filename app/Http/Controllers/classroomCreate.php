@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Google_Client;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
+use App\User;
 use phpDocumentor\Reflection\Types\Null_;
 use function PHPSTORM_META\type;
 
@@ -71,25 +73,24 @@ class classroomCreate extends Controller
         } else {
             return redirect()->route('oauthCallback');
         }
-
-        //session_start();
-        //if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-        //    $this->client->setAccessToken($_SESSION['access_token']);
-        //    $service = new \Google_Service_Classroom($this->client);
-        //    $optParams = array(
-        //        'courseStates' => "ACTIVE",
-        //        'pageSize' => 10
-        //    );
-        //    $results = $service->courses->listCourses($optParams);
-        //    $items = $results->getCourses();
-
-        //dump($items);
-        //    return view('classrooms')->with('items',$items);
-        //return $results->getItems();
-        //} else {
-        //    return redirect()->route('oauthCallback');
-        //}
     }
+
+    public function sub()
+    {
+        session_start();
+        if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+            $this->client->setAccessToken($_SESSION['access_token']);
+            $service = new \Google_Service_Classroom($this->client);
+
+            $results = $service->userProfiles->get('me');
+            $teacher = $results->verifiedTeacher;
+            dump($teacher);
+        } else {
+            return redirect()->route('oauthCallback');
+        }
+    }
+
+
     public function oauth()
     {
         session_start();

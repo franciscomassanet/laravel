@@ -91,10 +91,44 @@ class LoginController extends Controller
                 $newUser = new User;
                 $newUser->email = $user->getEmail();
                 $newUser->name = $user->getName();
+                $newUser->college = 'innov8';
                 $newUser->password = bcrypt(123456);
                 $newUser->save();
                 Auth::login($newUser);
             }
+
+
+            if(strpos($email,  '@eastleigh.ac.uk') !== false) {
+                $newUser = new User;
+                $newUser->email = $user->getEmail();
+                $newUser->name = $user->getName();
+                $newUser->college = 'Eastleigh';
+                $newUser->password = bcrypt(123456);
+                $newUser->save();
+                Auth::login($newUser);
+            }
+
+            if(strpos($email,  '@c-learning.net') !== false) {
+                $newUser = new User;
+                $newUser->email = $user->getEmail();
+                $newUser->name = $user->getName();
+                $newUser->college = 'c-learning';
+                $newUser->password = bcrypt(123456);
+                $newUser->save();
+                Auth::login($newUser);
+            }
+
+            if(strpos($email,  '@leedscitycollege.ac.uk') !== false) {
+                $newUser = new User;
+                $newUser->email = $user->getEmail();
+                $newUser->name = $user->getName();
+                $newUser->college = 'Leeds City College';
+                $newUser->password = bcrypt(123456);
+                $newUser->save();
+                Auth::login($newUser);
+            }
+
+
 		}
 
         return redirect()->back();

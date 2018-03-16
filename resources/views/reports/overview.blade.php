@@ -86,7 +86,7 @@
                     <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
                         <div>
-                            <span class='white-text mx-3'><h1>College Overview Report</h1></span>
+                            <span class='white-text mx-3'><h1>{{$college}} College Overview Report</h1></span>
                         </div>
 
                     </div>
@@ -172,8 +172,8 @@
 
 
                                             foreach ($totalCourses AS $item){
-                                                $totalCoursesPass = DB::table('results')->where('Grade', 'Pass')->where('CourseName', $item->CourseName)->count();
-                                                $totalCoursesFail = DB::table('results')->where('Grade', 'Fail')->where('CourseName', $item->CourseName)->count();
+                                                $totalCoursesPass = DB::table('results')->where('Grade', 'Pass')->where('college', $college)->where('CourseName', $item->CourseName)->count();
+                                                $totalCoursesFail = DB::table('results')->where('Grade', 'Fail')->where('college', $college)->where('CourseName', $item->CourseName)->count();
                                                 echo "
 												<tr>
 													<td>{$item->CourseName}</td>

@@ -103,7 +103,6 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a href="/home" class="dropdown-item">Home</a></li>
                                 <li><a href="/myResults" class="dropdown-item">My Results</a></li>
 
                             </ul>

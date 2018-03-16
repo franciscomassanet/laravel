@@ -15,59 +15,67 @@ class reports extends Controller
 {
     //Used for reporting college wide results
     public function overview(){
-        $date = \Carbon\Carbon::today()->subDays(30);
-        $prevDate = \Carbon\Carbon::today()->subDays(60);
+        $user = Auth::user()->email;
+        $college = Auth::user()->college;
 
-        //duration
-        $duration = DB::table('results')->where('Date', '>=', $date)->sum('Duration');
-        $duration = (round($duration / 60));
-        $prevDuration = DB::table('results')->where('Date', '>=', $prevDate)->sum('Duration');
-        $prevDuration = (round($prevDuration / 60 - $duration));
-        $duration_max = (round($duration / 100 * 25 + $duration));
+        $teacher = DB::table('users')->where('email', $user)->pluck('is_teacher')->first();
 
-        //total passes
-        $pass = DB::table('results')->where('Grade' , 'Pass')->where('Date', '>=', $date)->count('Grade');
-        $prevPass = DB::table('results')->where('Grade' , 'Pass')->where('Date', '>=', $prevDate)->count('Grade');
-        $prevPass = (round($prevPass - $pass));
-        $pass_max = (round($pass / 100 * 25 + $pass));
+        if ($teacher == 2) {
+            $date = \Carbon\Carbon::today()->subDays(30);
+            $prevDate = \Carbon\Carbon::today()->subDays(60);
 
-        //total fails
-        $fail = DB::table('results')->where('Grade' , 'Fail')->where('Date', '>=', $date)->count('Grade');
-        $prevFail = DB::table('results')->where('Grade' , 'Fail')->where('Date', '>=', $prevDate)->count('Grade');
-        $prevFail = (round($prevFail - $fail));
-        $fail_max = (round($fail / 100 * 25 + $fail));
+            //duration
+            $duration = DB::table('results')->where('Date', '>=', $date)->where('college', $college)->sum('Duration');
+            $duration = (round($duration / 60));
+            $prevDuration = DB::table('results')->where('Date', '>=', $prevDate)->where('college', $college)->sum('Duration');
+            $prevDuration = (round($prevDuration / 60 - $duration));
+            $duration_max = (round($duration / 100 * 25 + $duration));
 
+            //total passes
+            $pass = DB::table('results')->where('Grade', 'Pass')->where('Date', '>=', $date)->where('college', $college)->count('Grade');
+            $prevPass = DB::table('results')->where('Grade', 'Pass')->where('Date', '>=', $prevDate)->where('college', $college)->count('Grade');
+            $prevPass = (round($prevPass - $pass));
+            $pass_max = (round($pass / 100 * 25 + $pass));
 
-
-        $totalHours = Charts::create('gauge', 'justgage')
-            // Setup the chart settings
-            ->values([$duration, 0, $duration_max])
-            ->title("Total Hours");
-
-        $totalPass = Charts::create('gauge', 'justgage')
-            // Setup the chart settings
-            ->values([$pass, 0, $pass_max])
-            ->title("Courses Passed");
-
-        $totalFail = Charts::create('gauge', 'justgage')
-            // Setup the chart settings
-            ->values([$fail, 0, $fail_max])
-            ->title("Courses Failed");
-
-        $data = DB::table('results')->get();
-        $year = Charts::database($data, 'bar', 'highcharts')
-            ->title("Number of Courses Taken")
-            ->elementLabel("Total")
-            ->dimensions(1020, 500)
-            ->lastByDay(30, true);
-
-        $totalCourses = DB::table('results')->distinct()->orderBy('CourseName', 'ASC')->get(['CourseName']);
+            //total fails
+            $fail = DB::table('results')->where('Grade', 'Fail')->where('Date', '>=', $date)->where('college', $college)->count('Grade');
+            $prevFail = DB::table('results')->where('Grade', 'Fail')->where('Date', '>=', $prevDate)->where('college', $college)->count('Grade');
+            $prevFail = (round($prevFail - $fail));
+            $fail_max = (round($fail / 100 * 25 + $fail));
 
 
-        return view('reports.overview', ['totalHours' => $totalHours, 'totalPass' => $totalPass, 'totalFail' => $totalFail,
-            'prevDuration' => $prevDuration, 'prevPass' => $prevPass, 'prevFail' => $prevFail, 'year' => $year,
-            'totalCourses'=> $totalCourses
-        ]);
+            $totalHours = Charts::create('gauge', 'justgage')
+                // Setup the chart settings
+                ->values([$duration, 0, $duration_max])
+                ->title("Total Hours");
+
+            $totalPass = Charts::create('gauge', 'justgage')
+                // Setup the chart settings
+                ->values([$pass, 0, $pass_max])
+                ->title("Courses Passed");
+
+            $totalFail = Charts::create('gauge', 'justgage')
+                // Setup the chart settings
+                ->values([$fail, 0, $fail_max])
+                ->title("Courses Failed");
+
+            $data = DB::table('results')->where('college', $college)->get();
+            $year = Charts::database($data, 'bar', 'highcharts')
+                ->title("Number of Courses Taken")
+                ->elementLabel("Total")
+                ->dimensions(1020, 500)
+                ->lastByDay(30, true);
+
+            $totalCourses = DB::table('results')->where('college', $college)->distinct()->orderBy('CourseName', 'ASC')->get(['CourseName']);
+
+
+            return view('reports.overview', ['college' => $college, 'totalHours' => $totalHours, 'totalPass' => $totalPass, 'totalFail' => $totalFail,
+                'prevDuration' => $prevDuration, 'prevPass' => $prevPass, 'prevFail' => $prevFail, 'year' => $year,
+                'totalCourses' => $totalCourses
+            ]);
+        }else {
+            return view('access');
+        }
     }
 
     //Used for reporting student results

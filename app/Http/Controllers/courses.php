@@ -23,7 +23,7 @@ class courses extends Controller
         $admin = DB::table('users')->where('email', $id)->pluck('is_teacher')->first();
 
         if ($admin >= 1) {
-            $courses = DB::table('courses')->where('subject', $slug)->get();
+            $courses = DB::table('courses')->where('subject', $slug)->get()->sortBy('title');
             return view("subject_area/" . $slug, ['courses' => $courses]);
         };
 

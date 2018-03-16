@@ -16,12 +16,21 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+//testing routes
+
+
+
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teach', 'classroomCreate@index');
+Route::get('/teacher', 'teacherAdd@index');
+Route::get('/teacher/add', 'teacherAdd@teacherAdd');
 Route::get('/log', 'Auth\login@handleProviderCallback');
 
 Route::get('/newCourse', function () {

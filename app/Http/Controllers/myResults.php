@@ -20,7 +20,7 @@ class myResults extends Controller
         $qrys = DB::table('results')
             ->join('users_results', 'users_results.results_id', '=', 'results.id')
             ->join('users', 'users_results.user_id', '=', 'users.id')
-            ->get()->where('Email', $user);
+            ->get()->where('Email', $user)->sortByDesc('Date');
 
         //dump($user);
         //dump($qrys);

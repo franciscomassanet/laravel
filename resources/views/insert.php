@@ -1,6 +1,9 @@
 <?php
+
+
+
 DB::table('results')->insert( 
-	['CourseID' => $CourseID, 'CourseName' => $CourseName, 'Results'=>$Results, 'Grade'=>$Grade , 'Email'=>$Email, 'Duration'=>$Duration, 'Date'=>NOW(), 'created_at'=>NOW()]
+	['CourseID' => $CourseID, 'CourseName' => $CourseName, 'Results'=>$Results, 'Grade'=>$Grade , 'Email'=>$Email, 'college' => $college, 'Duration'=>$Duration, 'Date'=>NOW(), 'created_at'=>NOW()]
 );
 
 $id = DB::table('results')->orderBy('id', 'desc')->first();

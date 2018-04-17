@@ -143,6 +143,8 @@ class reports extends Controller
             'year' => $year]);
     }
 
+
+
     public function resultsBySubject($email){
         $date = \Carbon\Carbon::today()->subDays(30);
         $prevDate = \Carbon\Carbon::today()->subDays(60);

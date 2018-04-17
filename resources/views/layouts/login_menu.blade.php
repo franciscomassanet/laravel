@@ -2,6 +2,16 @@
 
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44263436-17"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-44263436-17');
+    </script>
+
     <!-- Required meta tags always come first -->
     <meta property="og:image" content="https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg">
     <meta charset="utf-8">

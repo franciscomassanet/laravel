@@ -2,6 +2,16 @@
 
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44263436-17"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-44263436-17');
+    </script>
+
     <!-- Required meta tags always come first -->
     <meta property="og:image" content="https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg">
     <meta charset="utf-8">
@@ -16,6 +26,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design for Bootstrap -->
@@ -82,6 +93,8 @@
         <div class="container" style="background-color:black;">
 
             <a type="" class="navbar-brand btn btn-default" href="http://classroom.google.com" type="button"><strong>Google Classroom <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></strong></a>
+            <li class="nav-item"><a class="btn btn-outline-success waves-effect btn-rounded nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfnl-pCrA1mDsiBB80mf45W6-s6jHFVusvIxZJktLdzedarYA/viewform" target="_blank">Feedback <i class="fas fa-question-circle"></i></a></li>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -97,16 +110,10 @@
                         <li><a href="{{ route('signin') }}" class="dropdown-item">Login</a></li>
                         <li><a href="{{ route('signin') }}" class="dropdown-item">Register</a></li>
                     @else
-                        <li class="navi-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="/myResults" class="dropdown-item">My Results</a></li>
-
-                            </ul>
+                        <li class="navi-item">
+                            <a type="" class="navbar-brand btn btn-default" href="/myResults" type="button"><strong>My Results <i class="fa fa-graduation-cap" aria-hidden="true"></i></strong></a>
                         </li>
+                        <i class="fas fa-question-circle"></i>
                     @endguest
                 </ul>
 

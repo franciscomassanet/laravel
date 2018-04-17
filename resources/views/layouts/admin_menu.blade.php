@@ -2,6 +2,16 @@
 
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44263436-17"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-44263436-17');
+    </script>
+
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -92,9 +102,6 @@
                             <a class="nav-link" href="/subjects">Subjects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/help">Help</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/classrooms">My Classrooms</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -105,6 +112,7 @@
                                 <a class="dropdown-item" href="/reports/overview">College Overview Report</a>
                             </div>
                         </li>
+                        <li class="nav-item"><a class="btn btn-outline-success waves-effect btn-rounded nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfnl-pCrA1mDsiBB80mf45W6-s6jHFVusvIxZJktLdzedarYA/viewform" target="_blank">Feedback <i class="fas fa-question-circle"></i></a></li>
                     </ul>
 					
 					<!-- Right Side Of Navbar -->
@@ -113,6 +121,7 @@
                         @guest
                             <li><a href="{{ route('login') }}" class="dropdown-item">Login</a></li>
                             <li><a href="{{ route('register') }}" class="dropdown-item">Register</a></li>
+                            <li><i class="fas fa-question-circle"></i></li>
                         @else
                             <li class="navi-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
@@ -121,7 +130,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li><a href="/myResults" class="dropdown-item">My Results</a></li>
-                                    <li><a href="/teachers" class="dropdown-item">Manage Teachers</a></li>
+                                    {{--<li><a href="/teachers" class="dropdown-item">Manage Teachers</a></li>--}}
                                     <!--<li><a href="/insert_course" class="dropdown-item">Add New Course</a></li>-->
                                     <li>
                                         <a href="{{ route('logout') }}" class="dropdown-item"

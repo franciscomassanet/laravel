@@ -86,7 +86,7 @@
                     <div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
                         <div>
-                            <span class='white-text mx-3'><h1>College Overview Report</h1></span>
+                            <span class='white-text mx-3'><h1>{{$email}} Report</h1></span>
                         </div>
 
                     </div>

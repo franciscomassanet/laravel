@@ -128,9 +128,19 @@ class LoginController extends Controller
                 Auth::login($newUser);
             }
 
+            if(strpos($email,  '@petroc.ac.uk') !== false) {
+                $newUser = new User;
+                $newUser->email = $user->getEmail();
+                $newUser->name = $user->getName();
+                $newUser->college = 'Petroc';
+                $newUser->password = bcrypt(123456);
+                $newUser->save();
+                Auth::login($newUser);
+            }
+
 
 		}
 
-        return redirect()->back();
+        return redirect()->intended('/home');
     }
 }

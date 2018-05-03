@@ -2,61 +2,17 @@
 
 <style>
 	body {
-		background-image: url("img/wallpapers/topBanner.jpg");
+		background-image: url("img/wallpapers/classroom-wallpaper.jpg");
 		background-attachment: fixed;
 		background-repeat:no-repeat;
 		background-size:cover;
 	}
 
-	.form-light .font-small {
-		font-size: 0.8rem; }
-
-	.form-light [type="radio"] + label,
-	.form-light [type="checkbox"] + label {
-		font-size: 0.8rem; }
-
-	.form-light [type="checkbox"] + label:before {
-		top: 2px;
-		width: 15px;
-		height: 15px; }
-
-	.form-light input[type="checkbox"] + label:before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 17px;
-		height: 17px;
-		z-index: 0;
-		border-radius: 1px;
-		margin-top: 2px;
-		-webkit-transition: 0.2s;
-		transition: 0.2s; }
-
-	.form-light input[type="checkbox"]:checked + label:before {
-		top: -4px;
-		left: -3px;
-		width: 12px;
-		height: 22px;
-		border-style: solid;
-		border-width: 2px;
-		border-color: transparent #EB3573 #EB3573 transparent;
-		-webkit-transform: rotate(40deg);
-		-ms-transform: rotate(40deg);
-		transform: rotate(40deg);
-		-webkit-backface-visibility: hidden;
-		-webkit-transform-origin: 100% 100%;
-		-ms-transform-origin: 100% 100%;
-		transform-origin: 100% 100%; }
-
-	.form-light .footer {
-		border-bottom-left-radius: .3rem;
-		border-bottom-right-radius: .3rem; }
 </style>
 
 @section('content')
 
-	<div class="container" style="background-color: rgba(255,255,255,0.5); padding-top: 40px; min-height: 80%; ">
+	<div class="container" style="padding-top: 40px; min-height: 80%; ">
 		@if ($errors->any())
 			<div class="col-md-8" style="padding: 10px;">
 				<div class="alert alert-danger">
@@ -80,7 +36,7 @@
 
 			<div class="col-md-12" >
 
-				<div class="card card-cascade narrower" style="margin-bottom: 20px;">
+				<div class="card card-cascade narrower" style="background-color: rgba(255,255,255,0.5); margin-bottom: 20px;">
 
 					<!--Card image-->
 					<div class="view gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
@@ -93,40 +49,34 @@
 					<!--/Card image-->
 
 					<div class="px-4" style="margin-bottom: 40px;">
-						<div class="table-wrapper">
-							<!--Table-->
-							<table class="table table-hover mb-0" >
-
-								<!--Table head-->
-								<thead align="center">
-								<tr>
-									<th class="th-lg" style="font-weight: bold;">Name</th>
-									<th class="th-lg" style="font-weight: bold;">Join Code</th>
-								</thead>
-								<!--Table head-->
-
-								<!--Table body-->
-								<tbody>
-								<tr>
-									<?php
 
 
-										foreach ($items AS $item){
+                                    <?php
+									echo "<div class='row d-flex'>";
+									foreach ($items AS $item){
+									    echo "
+											<div class='col-lg-3 col-md-6 mb-r'>
+												<div class='card card-cascade narrower'>
 
-												echo "
-												<tr>
-													<td><a href='class/{$item->id}/{$item->name}'>{$item->name}</a></td>
-													<td>{$item->enrollmentCode}</td>
-												</tr>
-												";
-										};
-									?>
+													<div class='view overlay hm-white-slight z-depth-1'>
+														<img src='/img/icon/google-classroom-banner.png' class='img-fluid'>
+													</div>
 
-								</tr>
-								</tbody>
-								<!--Table body-->
-							</table>
-							<!--Table-->
+													<div class='card-body text-center no-padding'>
+														<h4 class='card-title'><strong>{$item->name}</strong></h4>
+														<h5 class='card-title'>&nbsp;{$item->section}&nbsp;</h5>
+														<div class='card-footer'>
+															<a href='class/{$item->id}/{$item->name}' class='btn btn-primary'>View</a>
+														</div>
+														</a>
+													</div>
+
+												</div>
+											 </div>
+									 	";
+									 };
+                                    echo "</div>";
+                                    ?>
 						</div>
 					</div>
 

@@ -6,7 +6,7 @@
     <!--Main Layout-->
 	<style>
 		body {
-			background-image: url("img/wallpapers/topBanner.jpg");
+			background-image: url("img/wallpapers/launch.png");
 			background-attachment: fixed;
 			background-repeat:no-repeat;
 			background-size:cover;

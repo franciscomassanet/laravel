@@ -60,7 +60,9 @@ Route::get('insert/{CourseID}/{CourseName}/{Results}/{Grade}/{Email}/{Duration}'
 
 Route::get('/subjects', 'courses@subjects')->middleware('auth');
 Route::get('/subject_area/{slug}', 'courses@courses')->middleware('auth');
-Route::get('/lessons/{slug}/{course}', "contents@index")->middleware('auth');
+
+Route::get('/launch_lessons/{slug}/{course}', "contents@launch")->middleware('auth');
+Route::get('/lessons/{slug}/{course}', "contents@index");
 
 
 Route::get('/myResults/', 'myResults@results')->middleware('auth');

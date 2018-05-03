@@ -6,7 +6,7 @@
 
 <style>
     body {
-        background-image: url("/img/wallpapers/topBanner.jpg");
+        background-image: url("/img/wallpapers/launch.png");
         background-attachment: fixed;
         background-repeat:no-repeat;
         background-size:cover;
@@ -53,46 +53,35 @@
                     <!--/Card image-->
 
                     <div class="px-4" style="margin-bottom: 40px;">
-                        <div class="table-wrapper">
-                            <!--Table-->
-                            <table id="example" class="table table-hover mb-0 table-responsive" >
-
-                                <!--Table head-->
-                                <thead align="center">
-                                <tr>
-                                    <th class="th-lg" style="font-weight: bold;">Photo</th>
-                                    <th class="th-lg" style="font-weight: bold;">Name</th>
-                                    <th class="th-lg" style="font-weight: bold;">email</th>
-                                </tr>
-                                </thead>
-                                <!--Table head-->
-
-                                <!--Table body-->
-                                <tbody>
-                                <tr>
-                                    <?php
 
 
-                                    foreach ($results AS $item){
+                        <?php
+                        echo "<div class='row d-flex'>";
+                        foreach ($results AS $item){
+                            echo "
+											<div class='col-lg-3 col-md-6 mb-r'>
+												<div class='card card-cascade narrower z-depth-3'>
 
-                                        echo "
-												<tr>
-													<td><a href='/studentResults/{$item->profile->emailAddress}'><img src='{$item->profile->photoUrl}' alt='' style='max-height: 50px;'></a></td>
-													<td>{$item->profile->name->fullName}</td>
-													<td>{$item->profile->emailAddress}</td>
-												</tr>
-												";
-                                    };
-                                    ?>
+													<div class='' style='margin-top: 10px;'>
+														<img src='{$item->profile->photoUrl}' class='img-fluid rounded mx-auto d-block' style='max-height: 100px;'>
+													</div>
 
-                                </tr>
-                                </tbody>
-                                <!--Table body-->
-                            </table>
-                            <!--Table-->
-                        </div>
+													<div class='card-body text-center no-padding'>
+														<h4 class='card-title'><strong>{$item->profile->name->fullName}</strong></h4>
+														<div class='card-footer'>
+															<a href='/studentResults/{$item->profile->emailAddress}' class='btn btn-primary'>View</a>
+														</div>
+													</div>
+
+												</div>
+											 </div>
+									 	";
+                        };
+                        echo "</div>";
+                        ?>
+
+
                     </div>
-
                 </div>
             </div>
 

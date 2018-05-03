@@ -84,6 +84,8 @@ class LoginController extends Controller
 
 		if($findUser){
 			Auth::login($findUser);
+            Auth::user()->last_login = NOW();
+            Auth::user()->save();
 		}else {
 		    $email = $user->getEmail();
 
@@ -132,13 +134,14 @@ class LoginController extends Controller
                 $newUser = new User;
                 $newUser->email = $user->getEmail();
                 $newUser->name = $user->getName();
-                $newUser->college = 'Petroc';
+                $newUser->college = 'PETROC';
                 $newUser->password = bcrypt(123456);
                 $newUser->save();
                 Auth::login($newUser);
             }
 
-
+            Auth::user()->last_login = NOW();
+            Auth::user()->save();
 		}
 
         return redirect()->intended('/home');

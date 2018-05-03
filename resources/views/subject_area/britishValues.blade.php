@@ -54,10 +54,17 @@
 							<div class='card card-cascade narrower d-flex'>
 
 								<div class='card-body text-center no-padding'>
+									<div class='view'>
+										<img src='/img/icon/subject-prevent.jpg' class='img-fluid'>
+										<div class='mask flex-center .rgba-white-slight'>
+											<img src='{$course->status}' class='img-fluid'>
+										</div>
+									</div>
+									<br>
 									<h4 class='card-title'><strong>{$course->title}</strong></h4>
 									<p class='card-text'></p>
 									<a href='{$course->url}' target='_blank'>
-									<div class='card-footer'>
+									<div class='card-footer d-{$course->active}' >
 										<span class='left'>View Courses <span class='discount'></span></span>
 										<span class='right'><g:sharetoclassroom url='{$course->url}' thumbnailUrl='{$course->thumbnailUrl}' size='32' title='{$course->title}' body='{$course->body}'></g:sharetoclassroom></span>
 									</div>
@@ -100,10 +107,17 @@
                         <div class='card card-cascade narrower d-flex'>
 							
                             <div class='card-body text-center no-padding'>
+                            	<div class='view'>
+										<img src='/img/icon/subject-prevent.jpg' class='img-fluid'>
+										<div class='mask flex-center .rgba-white-slight'>
+											<img src='{$course->status}' class='img-fluid'>
+										</div>
+								</div>
+									<br>
                                 <h4 class='card-title'><strong>{$course->title}</strong></h4>
                                 <p class='card-text'></p>
                                 <a href='{$course->url}' target='_blank'>
-								<div class='card-footer'>
+								<div class='card-footer d-{$course->active}'>
                                     <span class='left'>View Courses <span class='discount'></span></span>
                                     <span class='right'><g:sharetoclassroom url='{$course->url}' thumbnailUrl='{$course->thumbnailUrl}' size='32' title='{$course->title}' body='{$course->body}'></g:sharetoclassroom></span>
                                 </div>
@@ -130,14 +144,15 @@
                         <div class='card card-cascade narrower'>
 							
                             <div class='card-body text-center no-padding'>
+                            	<div class='view'>
+										<img src='/img/icon/subject-prevent.jpg' class='img-fluid'>
+										<div class='mask flex-center .rgba-white-slight'>
+											<img src='{$course->status}' class='img-fluid'>
+										</div>
+									</div>
+									<br>
                                 <h4 class='card-title'><strong>{$course->title}</strong></h4>
-                                <p class='card-text'></p>
-                                <a href='{$course->url}' target='_blank'>
-								<div class='card-footer'>
-                                    <span class='left'>View Courses <span class='discount'></span></span>
-                                    <span class='right'><g:sharetoclassroom url='{$course->url}' thumbnailUrl='{$course->thumbnailUrl}' size='32' title='{$course->title}' body='{$course->body}'></g:sharetoclassroom></span>
-                                </div>
-								</a>
+                                d-{$course->active}
                             </div>
 					 
 						</div>
